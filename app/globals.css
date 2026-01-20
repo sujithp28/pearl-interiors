@@ -6,6 +6,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Cinematic slow zoom for hero background */
+@keyframes zoom {
+  0% { transform: scale(1.05); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1.05); }
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
