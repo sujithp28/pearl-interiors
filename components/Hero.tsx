@@ -27,7 +27,7 @@ export default function Hero() {
         </p>
 
         <div className="flex justify-center gap-4 mb-10">
-          {/* Gold Luxury Button */}
+          {/* Primary CTA */}
           <a
             href="#contact"
             className="relative px-7 py-2.5 rounded font-medium text-black
@@ -37,25 +37,28 @@ export default function Hero() {
                        hover:scale-[1.05]
                        transition-all duration-300"
           >
-            Schedule Your Design Consultation
+            Schedule a Private Design Consultation
           </a>
 
+          {/* Secondary CTA (No Project Promise) */}
           <a
-            href="#projects"
-            className="border border-white px-6 py-2 rounded hover:bg-white hover:text-black transition"
+            href="#contact"
+            className="border border-white px-6 py-2 rounded
+                       hover:bg-white hover:text-black
+                       transition"
           >
-            View Projects
+            Talk to Our Lead Designer
           </a>
         </div>
 
         <div className="flex flex-col md:flex-row justify-center gap-8 text-sm text-gray-300">
           <div>
             <div className="text-lg font-semibold text-white">750+</div>
-            Completed Luxury Interiors
+            Bespoke Interiors Delivered
           </div>
           <div>
             <div className="text-lg font-semibold text-white">5+ Years</div>
-            Trusted Design Leadership
+            Trusted Design Expertise
           </div>
           <div>
             <div className="text-lg font-semibold text-white">South India</div>
