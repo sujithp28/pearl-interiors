@@ -28,7 +28,7 @@ export default function Hero() {
           </div>
 
           <div>
-            <div className="text-xl font-semibold">5 Years</div>
+            <div className="text-xl font-semibold">5+ Years</div>
             <div>Trusted Design Leadership</div>
           </div>
 
