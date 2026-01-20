@@ -7,12 +7,20 @@ html {
 }
 
 /* Cinematic slow zoom for hero background */
-@keyframes zoom {
-  0% { transform: scale(1.05); }
-  50% { transform: scale(1.12); }
-  100% { transform: scale(1.05); }
+@keyframes slowZoom {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1.08) translateY(-10px);
+  }
 }
 
+.hero-bg-animate {
+  animation: slowZoom 25s ease-in-out infinite alternate;
+}
+
+/* Projects Section */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

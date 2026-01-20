@@ -4,9 +4,9 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center text-white text-center px-4 overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Image with Cinematic Motion */}
       <div
-        className="absolute inset-0 bg-cover bg-center scale-110"
+        className="absolute inset-0 bg-cover bg-center hero-bg-animate"
         style={{ backgroundImage: "url('/hero-bg.jpg')" }}
       />
 
@@ -15,7 +15,10 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10">
-        <h1 className="text-4xl md:text-6xl font-serif mb-4 tracking-wide">
+        <h1 className="text-4xl md:text-6xl font-serif mb-4 tracking-wide
+                       text-transparent bg-clip-text
+                       bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-200
+                       drop-shadow-[0_0_25px_rgba(255,215,120,0.35)]">
           Pearl Interiors
         </h1>
 
@@ -24,12 +27,19 @@ export default function Hero() {
         </p>
 
         <div className="flex justify-center gap-4 mb-10">
+          {/* Gold Luxury Button */}
           <a
             href="#contact"
-            className="bg-white text-black px-6 py-2 rounded hover:bg-gray-200 transition"
+            className="relative px-7 py-2.5 rounded font-medium text-black
+                       bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
+                       shadow-[0_0_18px_rgba(255,215,0,0.45)]
+                       hover:shadow-[0_0_35px_rgba(255,215,0,0.85)]
+                       hover:scale-[1.05]
+                       transition-all duration-300"
           >
             Schedule Your Design Consultation
           </a>
+
           <a
             href="#projects"
             className="border border-white px-6 py-2 rounded hover:bg-white hover:text-black transition"
