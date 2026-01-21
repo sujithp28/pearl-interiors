@@ -9,6 +9,7 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import FadeInSection from "../components/FadeInSection";
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
+import CitySEO from "../components/CitySEO";
 
 export default function Home() {
   return (
@@ -21,6 +22,10 @@ export default function Home() {
 
       <FadeInSection>
         <Services />
+      </FadeInSection>
+
+      <FadeInSection>
+        <CitySEO />
       </FadeInSection>
 
       <FadeInSection>
