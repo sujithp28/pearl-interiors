@@ -29,14 +29,20 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10">
-        <h1 className="text-4xl md:text-6xl font-serif mb-4 tracking-wide
+        <h1 className="text-4xl md:text-6xl font-serif mb-3 tracking-wide
                        text-transparent bg-clip-text
                        bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-200
                        drop-shadow-[0_0_25px_rgba(255,215,120,0.35)]">
           Pearl Interiors
         </h1>
 
-        <p className="max-w-xl mx-auto mb-6 text-gray-300">
+        {/* SEO Location Line */}
+        <p className="max-w-2xl mx-auto mb-2 text-gray-200 text-sm md:text-base tracking-wide">
+          Interior Designers in Hyderabad & Bangalore for Luxury Homes and Commercial Spaces
+        </p>
+
+        {/* Brand Promise */}
+        <p className="max-w-xl mx-auto mb-6 text-gray-400">
           Designing spaces that reflect elegance, comfort, and timeless luxury.
         </p>
 
