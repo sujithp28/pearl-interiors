@@ -28,9 +28,15 @@ export default function WhyChooseUs() {
 
   return (
     <section className="py-24 bg-gradient-to-b from-zinc-900 to-black text-white">
-      <h2 className="text-4xl font-serif text-center text-[#D4AF37] mb-4">
+      <h2 className="text-4xl font-serif text-center text-[#D4AF37] mb-2">
         Why Choose Pearl Interiors
       </h2>
+
+      {/* New Trust Line */}
+      <p className="text-center text-gray-300 mb-2">
+        Trusted by homeowners, villa developers, and commercial brands across South India.
+      </p>
+
       <p className="text-center text-gray-400 max-w-2xl mx-auto mb-12">
         A design studio trusted for discretion, craftsmanship, and timeless luxury.
       </p>

@@ -20,6 +20,23 @@ html {
   animation: slowZoom 25s ease-in-out infinite alternate;
 }
 
+/* Luxury Gold Pulse Animation */
+@keyframes luxuryPulse {
+  0% {
+    box-shadow: 0 0 18px rgba(212,175,55,0.4);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(212,175,55,0.85);
+  }
+  100% {
+    box-shadow: 0 0 18px rgba(212,175,55,0.4);
+  }
+}
+
+.luxury-glow {
+  animation: luxuryPulse 2.8s ease-in-out infinite;
+}
+
 /* Projects Section */
 .projects-grid {
   display: grid;

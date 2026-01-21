@@ -7,19 +7,46 @@ import ProcessTimeline from "../components/ProcessTimeline";
 import ConsultationForm from "../components/ConsultationForm";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import FadeInSection from "../components/FadeInSection";
+import FloatingWhatsApp from "../components/FloatingWhatsApp";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
-      <Services />
-      <Projects />
-      <WhyChooseUs />   {/* Trust & Privacy Section */}
-      <ProcessTimeline />  {/* Design Process Timeline */}
-      <ConsultationForm /> {/* Private Consultation Form */}
-      <Contact />
+
+      <FadeInSection>
+        <Hero />
+      </FadeInSection>
+
+      <FadeInSection>
+        <Services />
+      </FadeInSection>
+
+      <FadeInSection>
+        <Projects />
+      </FadeInSection>
+
+      <FadeInSection>
+        <WhyChooseUs />
+      </FadeInSection>
+
+      <FadeInSection>
+        <ProcessTimeline />
+      </FadeInSection>
+
+      <FadeInSection>
+        <ConsultationForm />
+      </FadeInSection>
+
+      <FadeInSection>
+        <Contact />
+      </FadeInSection>
+
       <Footer />
+
+      {/* Floating WhatsApp Button */}
+      <FloatingWhatsApp />
     </>
   );
 }
