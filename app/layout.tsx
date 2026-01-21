@@ -1,9 +1,12 @@
 import "./globals.css";
 
 export const metadata = {
+  metadataBase: new URL("https://pearl-interiors.vercel.app"),
+
   title: "Luxury Interior Designers in Hyderabad & Bangalore | Pearl Interiors",
   description:
     "Pearl Interiors is a premium interior design studio in Hyderabad and Bangalore, specializing in luxury apartments, villas, modular kitchens, and commercial interiors with complete client confidentiality.",
+
   keywords: [
     "Interior Designers in Hyderabad",
     "Interior Designers in Bangalore",
@@ -14,6 +17,7 @@ export const metadata = {
     "Commercial Interior Designers Hyderabad",
     "Best Interior Designers South India",
   ],
+
   openGraph: {
     title: "Pearl Interiors – Luxury Interior Designers in Hyderabad & Bangalore",
     description:
@@ -39,9 +43,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
-        {children}
-      </body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }
