@@ -1,12 +1,16 @@
+"use client";
+import { useState } from "react";
+
+const bedroomSets: Record<string, string[]> = {
+  Master: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/master/master${i + 1}.jpg`),
+  Couple: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/couple/couple${i + 1}.jpg`),
+  Kids: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/kids/kids${i + 1}.jpg`),
+  Senior: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/senior/senior${i + 1}.jpg`),
+};
+
 export default function Projects() {
-  const designs = [
-    { title: "Living Room", image: "/projects/living-room.jpg" },
-    { title: "Kitchen", image: "/projects/kitchen.jpg" },
-    { title: "Bedroom", image: "/projects/bedroom.jpg" },
-    { title: "Office", image: "/projects/office.jpg" },
-    { title: "Dining", image: "/projects/dining.jpg" },
-    { title: "Wardrobe", image: "/projects/wardrobe.jpg" },
-  ];
+  const [activeTab, setActiveTab] = useState("Bedroom");
+  const [bedroomType, setBedroomType] = useState("Master");
 
   return (
     <section
@@ -17,26 +21,57 @@ export default function Projects() {
         Design Inspirations
       </h2>
 
-      <p className="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
-        Sample design visuals shown for style reference. For client confidentiality,
-        completed residences are never displayed publicly.
+      <p className="text-center text-gray-400 mb-10 max-w-2xl mx-auto">
+        Curated concept visuals representing our design language. Client projects remain private.
       </p>
 
-      <div className="projects-grid">
-        {designs.map((d) => (
-          <div
-            key={d.title}
-            className="project-card luxury-card relative hover:scale-[1.03] transition-transform duration-300"
+      {/* Main Category Tabs */}
+      <div className="flex justify-center flex-wrap gap-4 mb-8">
+        {["Living", "Kitchen", "Bedroom", "Office", "Dining", "Wardrobe"].map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`px-5 py-2 rounded-full border transition-all ${
+              activeTab === tab
+                ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]"
+                : "border-white/20 text-white/70"
+            }`}
           >
+            {tab}
+          </button>
+        ))}
+      </div>
+
+      {/* Bedroom Sub Tabs */}
+      {activeTab === "Bedroom" && (
+        <div className="flex justify-center gap-3 mb-10 flex-wrap">
+          {["Master", "Couple", "Kids", "Senior"].map((type) => (
+            <button
+              key={type}
+              onClick={() => setBedroomType(type)}
+              className={`px-5 py-2 rounded-full border-2 text-sm tracking-wide transition-all ${
+                bedroomType === type
+                  ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]"
+                  : "border-white/20 text-white/70"
+              }`}
+            >
+              {type} Bedroom
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Image Grid */}
+      <div className="projects-grid">
+        {bedroomSets[bedroomType].map((img, i) => (
+          <div key={i} className="project-card luxury-card relative">
             <div className="project-image-wrapper">
-              <img src={d.image} alt={d.title} className="project-image" />
+              <img src={img} alt={bedroomType} className="project-image" />
             </div>
+            <div className="project-title text-white">{bedroomType} Bedroom</div>
 
-            <div className="project-title text-white">{d.title}</div>
-
-            {/* Sample Design Tag */}
             <span className="absolute bottom-3 right-3 text-[11px] bg-black/70 text-[#D4AF37] px-2 py-1 rounded-full tracking-wide">
-              Sample Design
+              Concept Design
             </span>
           </div>
         ))}
