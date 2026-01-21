@@ -1,16 +1,31 @@
 "use client";
 import { useState } from "react";
 
-const bedroomSets: Record<string, string[]> = {
-  Master: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/master/master${i + 1}.jpg`),
-  Couple: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/couple/couple${i + 1}.jpg`),
-  Kids: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/kids/kids${i + 1}.jpg`),
-  Senior: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/senior/senior${i + 1}.jpg`),
+const catalog = {
+  Bedroom: {
+    sub: ["Master", "Couple", "Kids", "Senior"],
+    images: {
+      Master: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/master/master${i + 1}.jpg`),
+      Couple: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/couple/couple${i + 1}.jpg`),
+      Kids: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/kids/kids${i + 1}.jpg`),
+      Senior: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/senior/senior${i + 1}.jpg`),
+    },
+  },
+  Living: { sub: [], images: {} },
+  Kitchen: { sub: [], images: {} },
+  Office: { sub: [], images: {} },
+  Dining: { sub: [], images: {} },
+  Wardrobe: { sub: [], images: {} },
 };
 
 export default function Projects() {
-  const [activeTab, setActiveTab] = useState("Bedroom");
-  const [bedroomType, setBedroomType] = useState("Master");
+  const [category, setCategory] = useState<keyof typeof catalog>("Bedroom");
+  const [subCategory, setSubCategory] = useState("Master");
+
+  const currentImages =
+    category === "Bedroom"
+      ? catalog.Bedroom.images[subCategory as keyof typeof catalog.Bedroom.images]
+      : [];
 
   return (
     <section
@@ -25,37 +40,40 @@ export default function Projects() {
         Curated concept visuals representing our design language. Client projects remain private.
       </p>
 
-      {/* Main Category Tabs */}
-      <div className="flex justify-center flex-wrap gap-4 mb-8">
-        {["Living", "Kitchen", "Bedroom", "Office", "Dining", "Wardrobe"].map((tab) => (
+      {/* Main Categories */}
+      <div className="flex justify-center flex-wrap gap-4 mb-6">
+        {Object.keys(catalog).map((cat) => (
           <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
+            key={cat}
+            onClick={() => {
+              setCategory(cat as any);
+              if (cat === "Bedroom") setSubCategory("Master");
+            }}
             className={`px-5 py-2 rounded-full border transition-all ${
-              activeTab === tab
+              category === cat
                 ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]"
                 : "border-white/20 text-white/70"
             }`}
           >
-            {tab}
+            {cat}
           </button>
         ))}
       </div>
 
-      {/* Bedroom Sub Tabs */}
-      {activeTab === "Bedroom" && (
-        <div className="flex justify-center gap-3 mb-10 flex-wrap">
-          {["Master", "Couple", "Kids", "Senior"].map((type) => (
+      {/* Sub Categories */}
+      {catalog[category].sub.length > 0 && (
+        <div className="flex justify-center flex-wrap gap-3 mb-10">
+          {catalog[category].sub.map((sub) => (
             <button
-              key={type}
-              onClick={() => setBedroomType(type)}
+              key={sub}
+              onClick={() => setSubCategory(sub)}
               className={`px-5 py-2 rounded-full border-2 text-sm tracking-wide transition-all ${
-                bedroomType === type
+                subCategory === sub
                   ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]"
                   : "border-white/20 text-white/70"
               }`}
             >
-              {type} Bedroom
+              {sub}
             </button>
           ))}
         </div>
@@ -63,13 +81,14 @@ export default function Projects() {
 
       {/* Image Grid */}
       <div className="projects-grid">
-        {bedroomSets[bedroomType].map((img, i) => (
+        {currentImages.map((img, i) => (
           <div key={i} className="project-card luxury-card relative">
             <div className="project-image-wrapper">
-              <img src={img} alt={bedroomType} className="project-image" />
+              <img src={img} alt={subCategory} className="project-image" />
             </div>
-            <div className="project-title text-white">{bedroomType} Bedroom</div>
-
+            <div className="project-title text-white">
+              {subCategory} Bedroom
+            </div>
             <span className="absolute bottom-3 right-3 text-[11px] bg-black/70 text-[#D4AF37] px-2 py-1 rounded-full tracking-wide">
               Concept Design
             </span>
