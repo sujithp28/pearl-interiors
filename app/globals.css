@@ -37,6 +37,19 @@ html {
   animation: luxuryPulse 2.8s ease-in-out infinite;
 }
 
+/* Luxury Card Micro Interaction */
+.luxury-card {
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+  transform-style: preserve-3d;
+}
+
+.luxury-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.35),
+    0 0 28px rgba(212,175,55,0.45);
+}
+
 /* Projects Section */
 .projects-grid {
   display: grid;

@@ -26,7 +26,7 @@ export default function Projects() {
         {designs.map((d) => (
           <div
             key={d.title}
-            className="project-card relative hover:scale-[1.03] transition-transform duration-300"
+            className="project-card luxury-card relative hover:scale-[1.03] transition-transform duration-300"
           >
             <div className="project-image-wrapper">
               <img src={d.image} alt={d.title} className="project-image" />

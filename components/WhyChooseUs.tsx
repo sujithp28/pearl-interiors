@@ -32,7 +32,6 @@ export default function WhyChooseUs() {
         Why Choose Pearl Interiors
       </h2>
 
-      {/* New Trust Line */}
       <p className="text-center text-gray-300 mb-2">
         Trusted by homeowners, villa developers, and commercial brands across South India.
       </p>
@@ -45,7 +44,7 @@ export default function WhyChooseUs() {
         {points.map((p) => (
           <div
             key={p.title}
-            className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8
+            className="luxury-card backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8
                        shadow-lg hover:shadow-[0_0_35px_rgba(212,175,55,0.25)]
                        hover:-translate-y-2 transition-all duration-300"
           >

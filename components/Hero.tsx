@@ -1,13 +1,27 @@
+"use client";
+import { useEffect, useState } from "react";
+
 export default function Hero() {
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setOffset(window.scrollY * 0.2);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center text-white text-center px-4 overflow-hidden"
     >
-      {/* Background Image with Cinematic Motion */}
+      {/* Parallax Background with Cinematic Motion */}
       <div
         className="absolute inset-0 bg-cover bg-center hero-bg-animate"
-        style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+        style={{
+          backgroundImage: "url('/hero-bg.jpg')",
+          transform: `translateY(${offset}px) scale(1.05)`,
+        }}
       />
 
       {/* Luxury Gradient Overlay */}
@@ -27,10 +41,10 @@ export default function Hero() {
         </p>
 
         <div className="flex justify-center gap-4 mb-10">
-          {/* Primary CTA */}
+          {/* Primary CTA with Luxury Glow */}
           <a
             href="#contact"
-            className="relative px-7 py-2.5 rounded font-medium text-black
+            className="luxury-glow relative px-7 py-2.5 rounded font-medium text-black
                        bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
                        shadow-[0_0_18px_rgba(255,215,0,0.45)]
                        hover:shadow-[0_0_35px_rgba(255,215,0,0.85)]
@@ -40,7 +54,7 @@ export default function Hero() {
             Schedule a Private Design Consultation
           </a>
 
-          {/* Secondary CTA (No Project Promise) */}
+          {/* Secondary CTA */}
           <a
             href="#contact"
             className="border border-white px-6 py-2 rounded
