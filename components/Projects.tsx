@@ -14,13 +14,16 @@ export default function Projects() {
   const [category, setCategory] = useState<keyof typeof catalog>("Bedroom");
 
   return (
-    <section className="py-24 bg-gradient-to-b from-zinc-900 via-black to-zinc-900 text-white">
+    <section
+      id="designs"
+      className="scroll-mt-28 py-24 bg-gradient-to-b from-zinc-900 via-black to-zinc-900 text-white"
+    >
       <h2 className="text-4xl font-serif text-center mb-3 text-[#D4AF37]">
-        Design Inspirations
+        Design Styles
       </h2>
 
       <p className="text-center text-gray-400 mb-10 max-w-2xl mx-auto">
-        Curated concept visuals representing our design language. Client projects remain private.
+        Explore our curated interior design styles across different spaces.
       </p>
 
       {/* Category Tabs */}
@@ -32,7 +35,7 @@ export default function Projects() {
             className={`px-6 py-2 rounded-full border transition-all ${
               category === cat
                 ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]"
-                : "border-white/20 text-white/70"
+                : "border-white/20 text-white/70 hover:border-[#D4AF37]/50"
             }`}
           >
             {cat}
@@ -45,7 +48,7 @@ export default function Projects() {
         {catalog[category].map((img, i) => (
           <div key={i} className="project-card luxury-card relative">
             <div className="project-image-wrapper">
-              <img src={img} alt={category} className="project-image" />
+              <img src={img} alt={`${category} design ${i + 1}`} className="project-image" />
             </div>
             <div className="project-title text-white">{category}</div>
             <span className="absolute bottom-3 right-3 text-[11px] bg-black/70 text-[#D4AF37] px-2 py-1 rounded-full">

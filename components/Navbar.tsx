@@ -5,6 +5,16 @@ import { useState } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const yOffset = -100; // adjust for fixed navbar height
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+    setOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md text-white z-50 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -16,20 +26,20 @@ export default function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-10 text-sm uppercase tracking-wider">
           {[
-            { label: "Services", link: "#services" },
-            { label: "Design Styles", link: "#designs" },
-            { label: "Contact", link: "#contact" },
+            { label: "Services", id: "services" },
+            { label: "Design Styles", id: "designs" },
+            { label: "Contact", id: "contact" },
           ].map((item) => (
-            <a
+            <button
               key={item.label}
-              href={item.link}
+              onClick={() => scrollToSection(item.id)}
               className="relative group transition-all duration-300"
             >
               <span className="group-hover:text-[#D4AF37] transition-colors">
                 {item.label}
               </span>
               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#D4AF37] transition-all duration-300 group-hover:w-full shadow-[0_0_8px_rgba(212,175,55,0.7)]" />
-            </a>
+            </button>
           ))}
         </div>
 
@@ -54,18 +64,17 @@ export default function Navbar() {
         </div>
 
         <div className="flex flex-col space-y-6 p-6 uppercase tracking-wider text-sm">
-          <a href="#services" onClick={() => setOpen(false)} className="hover:text-[#D4AF37]">
+          <button onClick={() => scrollToSection("services")} className="hover:text-[#D4AF37] text-left">
             Services
-          </a>
-          <a href="#designs" onClick={() => setOpen(false)} className="hover:text-[#D4AF37]">
+          </button>
+          <button onClick={() => scrollToSection("designs")} className="hover:text-[#D4AF37] text-left">
             Design Styles
-          </a>
-          <a href="#contact" onClick={() => setOpen(false)} className="hover:text-[#D4AF37]">
+          </button>
+          <button onClick={() => scrollToSection("contact")} className="hover:text-[#D4AF37] text-left">
             Contact
-          </a>
+          </button>
         </div>
       </div>
     </nav>
   );
 }
-
