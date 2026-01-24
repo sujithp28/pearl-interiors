@@ -19,6 +19,13 @@ const catalog = {
   Wardrobe: { sub: [], images: {} },
 };
 
+const bedroomLinks: Record<string, string> = {
+  Master: "/bedroom-interiors/master-bedroom",
+  Couple: "/bedroom-interiors/couple-bedroom",
+  Kids: "/bedroom-interiors/kids-bedroom",
+  Senior: "/bedroom-interiors/senior-bedroom",
+};
+
 export default function Projects() {
   const [category, setCategory] = useState<keyof typeof catalog>("Bedroom");
   const [subCategory, setSubCategory] = useState("Master");
@@ -61,36 +68,27 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Sub Categories */}
+      {/* Bedroom Sub Categories (All Linked) */}
       {catalog[category].sub.length > 0 && (
         <div className="flex justify-center flex-wrap gap-3 mb-10">
-          {catalog[category].sub.map((sub) =>
-            sub === "Master" ? (
-              <Link key={sub} href="/bedroom-interiors/master-bedroom">
-                <div className="px-5 py-2 rounded-full border-2 text-sm tracking-wide cursor-pointer
-                                border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]
-                                hover:shadow-[0_0_25px_rgba(212,175,55,0.9)] transition-all">
-                  Master Bedroom
-                </div>
-              </Link>
-            ) : (
-              <button
-                key={sub}
+          {catalog[category].sub.map((sub) => (
+            <Link key={sub} href={bedroomLinks[sub]}>
+              <div
                 onClick={() => setSubCategory(sub)}
-                className={`px-5 py-2 rounded-full border-2 text-sm tracking-wide transition-all ${
+                className={`px-5 py-2 rounded-full border-2 text-sm tracking-wide cursor-pointer transition-all ${
                   subCategory === sub
                     ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]"
-                    : "border-white/20 text-white/70"
+                    : "border-white/20 text-white/70 hover:border-[#D4AF37] hover:text-[#D4AF37]"
                 }`}
               >
                 {sub} Bedroom
-              </button>
-            )
-          )}
+              </div>
+            </Link>
+          ))}
         </div>
       )}
 
-      {/* Image Grid */}
+      {/* Image Grid (Preview Only) */}
       <div className="projects-grid">
         {currentImages.map((img, i) => (
           <div key={i} className="project-card luxury-card relative">
@@ -109,4 +107,3 @@ export default function Projects() {
     </section>
   );
 }
-
