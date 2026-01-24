@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 const catalog = {
   Bedroom: {
@@ -18,10 +19,8 @@ const catalog = {
   Wardrobe: { sub: [], images: {} },
 };
 
-type Category = keyof typeof catalog;
-
 export default function Projects() {
-  const [category, setCategory] = useState<Category>("Bedroom");
+  const [category, setCategory] = useState<keyof typeof catalog>("Bedroom");
   const [subCategory, setSubCategory] = useState("Master");
 
   const currentImages =
@@ -42,13 +41,13 @@ export default function Projects() {
         Curated concept visuals representing our design language. Client projects remain private.
       </p>
 
-      {/* Main Category Tabs */}
+      {/* Main Categories */}
       <div className="flex justify-center flex-wrap gap-4 mb-6">
-        {(Object.keys(catalog) as Category[]).map((cat) => (
+        {Object.keys(catalog).map((cat) => (
           <button
             key={cat}
             onClick={() => {
-              setCategory(cat);
+              setCategory(cat as any);
               if (cat === "Bedroom") setSubCategory("Master");
             }}
             className={`px-5 py-2 rounded-full border transition-all ${
@@ -62,22 +61,32 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Sub Category Tabs */}
+      {/* Sub Categories */}
       {catalog[category].sub.length > 0 && (
         <div className="flex justify-center flex-wrap gap-3 mb-10">
-          {catalog[category].sub.map((sub) => (
-            <button
-              key={sub}
-              onClick={() => setSubCategory(sub)}
-              className={`px-5 py-2 rounded-full border-2 text-sm transition-all ${
-                subCategory === sub
-                  ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]"
-                  : "border-white/20 text-white/70"
-              }`}
-            >
-              {sub} Bedroom
-            </button>
-          ))}
+          {catalog[category].sub.map((sub) =>
+            sub === "Master" ? (
+              <Link key={sub} href="/bedroom-interiors/master-bedroom">
+                <div className="px-5 py-2 rounded-full border-2 text-sm tracking-wide cursor-pointer
+                                border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]
+                                hover:shadow-[0_0_25px_rgba(212,175,55,0.9)] transition-all">
+                  Master Bedroom
+                </div>
+              </Link>
+            ) : (
+              <button
+                key={sub}
+                onClick={() => setSubCategory(sub)}
+                className={`px-5 py-2 rounded-full border-2 text-sm tracking-wide transition-all ${
+                  subCategory === sub
+                    ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]"
+                    : "border-white/20 text-white/70"
+                }`}
+              >
+                {sub} Bedroom
+              </button>
+            )
+          )}
         </div>
       )}
 
@@ -88,9 +97,9 @@ export default function Projects() {
             <div className="project-image-wrapper">
               <img src={img} alt={subCategory} className="project-image" />
             </div>
-
-            <div className="project-title text-white">{subCategory} Bedroom</div>
-
+            <div className="project-title text-white">
+              {subCategory} Bedroom
+            </div>
             <span className="absolute bottom-3 right-3 text-[11px] bg-black/70 text-[#D4AF37] px-2 py-1 rounded-full tracking-wide">
               Concept Design
             </span>
