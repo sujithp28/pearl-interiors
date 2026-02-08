@@ -1,10 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import AppointmentModal from "./AppointmentModal";
 
 export default function Hero() {
   const [offset, setOffset] = useState(0);
-  const [openModal, setOpenModal] = useState(false);
 
   // Parallax scroll
   useEffect(() => {
@@ -12,6 +10,17 @@ export default function Hero() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // ⭐ Scroll to Consultation section
+  const scrollToConsultation = () => {
+    const el = document.getElementById("consultation");
+    if (el) {
+      const yOffset = -80; // navbar height offset
+      const y =
+        el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  };
 
   return (
     <section
@@ -50,9 +59,9 @@ export default function Hero() {
         {/* ⭐ CTA BUTTONS */}
         <div className="flex justify-center gap-4 mb-10 flex-wrap">
 
-          {/* Opens Appointment Modal */}
+          {/* Scrolls to consultation form */}
           <button
-            onClick={() => setOpenModal(true)}
+            onClick={scrollToConsultation}
             className="luxury-glow relative px-7 py-3 rounded font-medium text-black
                        bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
                        shadow-[0_0_18px_rgba(255,215,0,0.45)]
@@ -91,10 +100,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      {/* ⭐ TOP SLIDE APPOINTMENT PANEL */}
-      <AppointmentModal open={openModal} onClose={() => setOpenModal(false)} />
-
     </section>
   );
 }
