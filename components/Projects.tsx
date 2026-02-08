@@ -14,8 +14,10 @@ export default function Projects() {
   const [category, setCategory] = useState<keyof typeof catalog>("Bedroom");
   const [index, setIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
-  // Auto slide every 5 sec
+  // AUTO SLIDE
   useEffect(() => {
     startAutoSlide();
     return stopAutoSlide;
@@ -23,11 +25,7 @@ export default function Projects() {
 
   const startAutoSlide = () => {
     stopAutoSlide();
-    intervalRef.current = setInterval(() => {
-      setIndex((prev) =>
-        prev === catalog[category].length - 1 ? 0 : prev + 1
-      );
-    }, 5000);
+    intervalRef.current = setInterval(() => next(), 5000);
   };
 
   const stopAutoSlide = () => {
@@ -35,17 +33,34 @@ export default function Projects() {
   };
 
   const next = () => {
-    stopAutoSlide();
     setIndex((prev) =>
       prev === catalog[category].length - 1 ? 0 : prev + 1
     );
   };
 
   const prev = () => {
-    stopAutoSlide();
     setIndex((prev) =>
       prev === 0 ? catalog[category].length - 1 : prev - 1
     );
+  };
+
+  // SWIPE HANDLERS
+  const handleTouchStart = (e: React.TouchEvent) => {
+    stopAutoSlide();
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const distance = touchStartX.current - touchEndX.current;
+
+    if (distance > 50) next(); // swipe left
+    if (distance < -50) prev(); // swipe right
+
+    startAutoSlide();
   };
 
   return (
@@ -81,11 +96,15 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* ⭐ Carousel */}
+      {/* ⭐ CAROUSEL */}
       <div className="relative max-w-4xl mx-auto px-6">
 
-        {/* Image */}
-        <div className="overflow-hidden rounded-3xl luxury-card">
+        <div
+          className="overflow-hidden rounded-3xl luxury-card"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <img
             src={catalog[category][index]}
             alt="Interior Design"
@@ -93,7 +112,7 @@ export default function Projects() {
           />
         </div>
 
-        {/* Left Arrow */}
+        {/* Arrows */}
         <button
           onClick={prev}
           className="absolute top-1/2 -left-2 -translate-y-1/2 bg-black/60 px-3 py-2 rounded-full"
@@ -101,7 +120,6 @@ export default function Projects() {
           ◀
         </button>
 
-        {/* Right Arrow */}
         <button
           onClick={next}
           className="absolute top-1/2 -right-2 -translate-y-1/2 bg-black/60 px-3 py-2 rounded-full"
