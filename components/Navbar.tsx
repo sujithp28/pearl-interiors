@@ -1,14 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  // 🔒 Prevent page scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "auto";
+  }, [open]);
+
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
-      const yOffset = -100; // adjust for fixed navbar height
+      const yOffset = -100;
       const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
@@ -16,8 +21,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md text-white z-50 border-b border-white/10">
+    <nav className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md text-white z-[100] border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        
         {/* Logo */}
         <h1 className="text-xl font-serif tracking-wide text-[#D4AF37]">
           Pearl Interiors
@@ -45,32 +51,49 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl text-[#D4AF37]"
+          className="md:hidden text-2xl text-[#D4AF37] z-[200]"
           onClick={() => setOpen(true)}
         >
           ☰
         </button>
       </div>
 
-      {/* Mobile Slide Menu */}
+      {/* 🌑 DARK OVERLAY */}
+      {open && (
+        <div
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[150]"
+        />
+      )}
+
+      {/* 📱 MOBILE SLIDE MENU */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-black text-white transform ${
+        className={`fixed top-0 right-0 h-full w-72 bg-black text-white transform ${
           open ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 z-50`}
+        } transition-transform duration-300 z-[200] shadow-2xl`}
       >
         <div className="p-6 flex justify-between items-center border-b border-white/10">
           <span className="font-serif text-[#D4AF37] text-lg">Menu</span>
-          <button onClick={() => setOpen(false)} className="text-xl">✕</button>
+          <button onClick={() => setOpen(false)} className="text-2xl">✕</button>
         </div>
 
-        <div className="flex flex-col space-y-6 p-6 uppercase tracking-wider text-sm">
-          <button onClick={() => scrollToSection("services")} className="hover:text-[#D4AF37] text-left">
+        <div className="flex flex-col space-y-8 p-8 uppercase tracking-wider text-sm">
+          <button
+            onClick={() => scrollToSection("services")}
+            className="hover:text-[#D4AF37] text-left"
+          >
             Services
           </button>
-          <button onClick={() => scrollToSection("designs")} className="hover:text-[#D4AF37] text-left">
+          <button
+            onClick={() => scrollToSection("designs")}
+            className="hover:text-[#D4AF37] text-left"
+          >
             Design Styles
           </button>
-          <button onClick={() => scrollToSection("contact")} className="hover:text-[#D4AF37] text-left">
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="hover:text-[#D4AF37] text-left"
+          >
             Contact
           </button>
         </div>
@@ -78,3 +101,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
