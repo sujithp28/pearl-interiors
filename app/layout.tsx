@@ -1,9 +1,15 @@
 import "./globals.css";
+import LocalSchema from "../components/LocalSchema";
 
 export const metadata = {
   metadataBase: new URL("https://pearl-interiors.vercel.app"),
 
-  title: "Luxury Interior Designers in Hyderabad, Bangalore & Anantapur | Pearl Interiors",
+  title: {
+    default:
+      "Luxury Interior Designers in Hyderabad, Bangalore & Anantapur | Pearl Interiors",
+    template: "%s | Pearl Interiors",
+  },
+
   description:
     "Pearl Interiors is a premium interior design studio serving Hyderabad, Bangalore, and Anantapur, specializing in luxury apartments, villas, modular kitchens, and commercial interiors with complete client confidentiality.",
 
@@ -21,11 +27,14 @@ export const metadata = {
   ],
 
   openGraph: {
-    title: "Pearl Interiors – Luxury Interior Designers in Hyderabad, Bangalore & Anantapur",
+    title:
+      "Pearl Interiors – Luxury Interior Designers in Hyderabad, Bangalore & Anantapur",
     description:
-      "Bespoke luxury interiors for apartments, villas, and commercial spaces across Hyderabad, Bangalore, and Anantapur. Confidential. Premium. Timeless.",
+      "Bespoke luxury interiors for apartments, villas, and commercial spaces across Hyderabad, Bangalore, and Anantapur.",
     url: "https://pearl-interiors.vercel.app",
     siteName: "Pearl Interiors",
+    locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "/og-image.jpg",
@@ -34,7 +43,11 @@ export const metadata = {
         alt: "Pearl Interiors Luxury Design Studio",
       },
     ],
-    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -44,8 +57,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>{children}</body>
+    <html lang="en">
+      <body>
+        {/* ⭐ Local Business Schema for Google */}
+        <LocalSchema />
+
+        {children}
+      </body>
     </html>
   );
 }

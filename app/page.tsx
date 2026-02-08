@@ -1,3 +1,11 @@
+export const metadata = {
+  title: "Luxury Interior Designers in Hyderabad & Bangalore",
+  description:
+    "Premium home interiors, modular kitchens and wardrobes. 45-day delivery with warranty.",
+};
+import FAQ from "../components/FAQ";
+import Pricing from "../components/Pricing";
+import Testimonials from "../components/Testimonials";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Services from "../components/Services";
@@ -16,34 +24,52 @@ export default function Home() {
     <>
       <Navbar />
 
+      {/* 1️⃣ HERO */}
       <FadeInSection>
         <Hero />
       </FadeInSection>
 
-      <FadeInSection>
-        <Services />
-      </FadeInSection>
-
-      <FadeInSection>
-        <CitySEO />
-      </FadeInSection>
-
-      <FadeInSection>
-        <Projects />
-      </FadeInSection>
-
+      {/* 2️⃣ TRUST FIRST */}
       <FadeInSection>
         <WhyChooseUs />
       </FadeInSection>
 
+      {/* 3️⃣ SERVICES */}
+      <FadeInSection>
+        <Services />
+      </FadeInSection>
+
+      {/* 4️⃣ SHOW WORK EARLY (VERY IMPORTANT) */}
+      <FadeInSection>
+        <Projects />
+      </FadeInSection>
+
+      {/* 5️⃣ SEO CITY CONTENT (MOVE DOWN) */}
+      <FadeInSection>
+        <CitySEO />
+      </FadeInSection>
+
+      {/* 6️⃣ PROCESS */}
       <FadeInSection>
         <ProcessTimeline />
       </FadeInSection>
+	
+      <FadeInSection>
+        <Pricing />
+      </FadeInSection>
 
+      {/* ⭐ TESTIMONIALS */}
+      <FadeInSection>
+        <Testimonials />
+      </FadeInSection>
+
+
+      {/* 7️⃣ LEAD CAPTURE FORM */}
       <FadeInSection>
         <ConsultationForm />
       </FadeInSection>
 
+      {/* 8️⃣ FINAL CONTACT CTA */}
       <FadeInSection>
         <Contact />
       </FadeInSection>

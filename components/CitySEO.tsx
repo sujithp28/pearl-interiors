@@ -1,50 +1,42 @@
 export default function CitySEO() {
+  const cities = [
+    "Hyderabad",
+    "Bangalore",
+    "Anantapur",
+    "Tirupati",
+    "Vijayawada",
+    "Guntur",
+    "Kurnool",
+  ];
+
   return (
-    <section className="py-20 bg-black text-white">
-      <h2 className="text-3xl md:text-4xl font-serif text-center text-[#D4AF37] mb-10">
-        Luxury Interior Designers in Hyderabad, Bangalore, Anantapur & Tirupati
-      </h2>
+    <section className="pt-24 pb-32 bg-gradient-to-b from-black to-[#0a0a0a] text-white">
+      <div className="max-w-6xl mx-auto px-6 text-center">
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6 text-gray-300">
+        <h2 className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-8">
+          Luxury Interior Designers Across South India
+        </h2>
 
-        <div className="luxury-card p-6 rounded-xl bg-white/5 border border-white/10">
-          <h3 className="text-xl text-[#D4AF37] mb-2">Hyderabad</h3>
-          <p>
-            Pearl Interiors is a leading luxury interior design studio in Hyderabad,
-            creating bespoke apartments, villas, and premium commercial spaces with
-            complete confidentiality and flawless execution.
-          </p>
-        </div>
+        <p className="text-gray-400 leading-relaxed max-w-4xl mx-auto">
+          Pearl Interiors delivers premium residential and commercial interior
+          design services across major cities in South India. From modular
+          kitchens to full home interiors, we provide end-to-end execution with
+          strict confidentiality, premium materials, and on-time delivery.
+        </p>
 
-        <div className="luxury-card p-6 rounded-xl bg-white/5 border border-white/10">
-          <h3 className="text-xl text-[#D4AF37] mb-2">Bangalore</h3>
-          <p>
-            Trusted interior designers in Bangalore for high-end residences,
-            modular kitchens, and corporate interiors, delivering timeless design
-            with world-class craftsmanship.
-          </p>
-        </div>
-
-        <div className="luxury-card p-6 rounded-xl bg-white/5 border border-white/10">
-          <h3 className="text-xl text-[#D4AF37] mb-2">Anantapur</h3>
-          <p>
-            Pearl Interiors has executed bespoke interior projects across prominent
-            residential and commercial zones of Anantapur, including premium
-            apartment corridors, villa communities, and upcoming luxury developments
-            along Raptadu Road, Gooty Road, and Bellary Road.
-          </p>
-          <p className="mt-3 text-sm text-gray-400 italic">
-            All client projects remain strictly private and confidential.
-          </p>
-        </div>
-
-        <div className="luxury-card p-6 rounded-xl bg-white/5 border border-white/10">
-          <h3 className="text-xl text-[#D4AF37] mb-2">Tirupati</h3>
-          <p>
-            Premium interior design services in Tirupati for apartments, villas,
-            and commercial spaces, combining vastu-aligned planning, luxury finishes,
-            and turnkey execution with complete client confidentiality.
-          </p>
+        {/* Location Chips */}
+        <div className="flex flex-wrap justify-center gap-4 mt-12">
+          {cities.map((city, i) => (
+            <span
+              key={i}
+              className="px-6 py-3 border border-white/10 rounded-full 
+              text-gray-300 hover:border-[#D4AF37] hover:text-[#D4AF37]
+              hover:shadow-[0_0_20px_rgba(212,175,55,0.25)]
+              transition duration-300"
+            >
+              {city}
+            </span>
+          ))}
         </div>
 
       </div>
