@@ -40,15 +40,24 @@ export const metadata = {
   },
 };
 
+/* ⭐ FIX 1 — Makes desktop render as desktop (VERY IMPORTANT) */
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
+/* ⭐ FIX 2 — Prevent hydration errors from Chrome extensions */
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      {/* ⭐ This line fixes ALL z-index conflicts */}
-      <body className="relative z-0">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className="bg-black text-white overflow-x-hidden">
+        {children}
+      </body>
     </html>
   );
 }

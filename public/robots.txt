@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pearl-interiors.vercel.app/sitemap.xml
+
