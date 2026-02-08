@@ -23,7 +23,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md text-white z-[100] border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        
+
         {/* Logo */}
         <h1 className="text-xl font-serif tracking-wide text-[#D4AF37]">
           Pearl Interiors
@@ -51,53 +51,51 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl text-[#D4AF37] z-[200]"
+          className="md:hidden text-2xl text-[#D4AF37]"
           onClick={() => setOpen(true)}
         >
           ☰
         </button>
       </div>
 
-      {/* 🌑 DARK OVERLAY */}
+      {/* ⭐ FULLSCREEN MOBILE MENU */}
       {open && (
-        <div
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[150]"
-        />
+        <div className="fixed inset-0 z-[999] bg-black text-white flex flex-col">
+
+          {/* Top bar */}
+          <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
+            <span className="text-[#D4AF37] font-serif text-xl">
+              Pearl Interiors
+            </span>
+
+            <button
+              onClick={() => setOpen(false)}
+              className="text-2xl text-white/70"
+            >
+              ✕
+            </button>
+          </div>
+
+          {/* Menu links */}
+          <div className="flex flex-col items-center justify-center flex-1 gap-10 text-2xl font-serif">
+            <button onClick={() => scrollToSection("services")}>Services</button>
+            <button onClick={() => scrollToSection("designs")}>Design Styles</button>
+            <button onClick={() => scrollToSection("contact")}>Contact</button>
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="p-6 border-t border-white/10">
+            <a
+              href="https://wa.me/919391045855"
+              target="_blank"
+              className="block text-center bg-[#D4AF37] text-black font-semibold py-3 rounded-full"
+            >
+              Call / WhatsApp Now
+            </a>
+          </div>
+
+        </div>
       )}
-
-      {/* 📱 MOBILE SLIDE MENU */}
-      <div
-        className={`fixed top-0 right-0 h-full w-72 bg-black text-white transform ${
-          open ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 z-[200] shadow-2xl`}
-      >
-        <div className="p-6 flex justify-between items-center border-b border-white/10">
-          <span className="font-serif text-[#D4AF37] text-lg">Menu</span>
-          <button onClick={() => setOpen(false)} className="text-2xl">✕</button>
-        </div>
-
-        <div className="flex flex-col space-y-8 p-8 uppercase tracking-wider text-sm">
-          <button
-            onClick={() => scrollToSection("services")}
-            className="hover:text-[#D4AF37] text-left"
-          >
-            Services
-          </button>
-          <button
-            onClick={() => scrollToSection("designs")}
-            className="hover:text-[#D4AF37] text-left"
-          >
-            Design Styles
-          </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="hover:text-[#D4AF37] text-left"
-          >
-            Contact
-          </button>
-        </div>
-      </div>
     </nav>
   );
 }
