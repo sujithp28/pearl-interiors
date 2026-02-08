@@ -1,15 +1,10 @@
 import "./globals.css";
-import LocalSchema from "../components/LocalSchema";
 
 export const metadata = {
   metadataBase: new URL("https://pearl-interiors.vercel.app"),
 
-  title: {
-    default:
-      "Luxury Interior Designers in Hyderabad, Bangalore & Anantapur | Pearl Interiors",
-    template: "%s | Pearl Interiors",
-  },
-
+  title:
+    "Luxury Interior Designers in Hyderabad, Bangalore & Anantapur | Pearl Interiors",
   description:
     "Pearl Interiors is a premium interior design studio serving Hyderabad, Bangalore, and Anantapur, specializing in luxury apartments, villas, modular kitchens, and commercial interiors with complete client confidentiality.",
 
@@ -30,11 +25,9 @@ export const metadata = {
     title:
       "Pearl Interiors – Luxury Interior Designers in Hyderabad, Bangalore & Anantapur",
     description:
-      "Bespoke luxury interiors for apartments, villas, and commercial spaces across Hyderabad, Bangalore, and Anantapur.",
+      "Bespoke luxury interiors for apartments, villas, and commercial spaces across South India.",
     url: "https://pearl-interiors.vercel.app",
     siteName: "Pearl Interiors",
-    locale: "en_IN",
-    type: "website",
     images: [
       {
         url: "/og-image.jpg",
@@ -43,11 +36,7 @@ export const metadata = {
         alt: "Pearl Interiors Luxury Design Studio",
       },
     ],
-  },
-
-  robots: {
-    index: true,
-    follow: true,
+    type: "website",
   },
 };
 
@@ -58,12 +47,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        {/* ⭐ Local Business Schema for Google */}
-        <LocalSchema />
-
-        {children}
-      </body>
+      {/* ⭐ This line fixes ALL z-index conflicts */}
+      <body className="relative z-0">{children}</body>
     </html>
   );
 }

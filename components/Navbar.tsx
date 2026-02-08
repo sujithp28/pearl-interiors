@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  // 🔒 Prevent page scroll when menu is open
+  // Prevent scroll when menu open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "auto";
   }, [open]);
@@ -44,12 +44,12 @@ export default function Navbar() {
               <span className="group-hover:text-[#D4AF37] transition-colors">
                 {item.label}
               </span>
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#D4AF37] transition-all duration-300 group-hover:w-full shadow-[0_0_8px_rgba(212,175,55,0.7)]" />
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
             </button>
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Button */}
         <button
           className="md:hidden text-2xl text-[#D4AF37]"
           onClick={() => setOpen(true)}
@@ -60,7 +60,7 @@ export default function Navbar() {
 
       {/* ⭐ FULLSCREEN MOBILE MENU */}
       {open && (
-        <div className="fixed inset-0 z-[9999] bg-black text-white flex flex-col">
+        <div className="fixed inset-0 z-[99999] bg-black text-white flex flex-col">
 
           {/* Top bar */}
           <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
@@ -76,7 +76,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Menu Content */}
+          {/* Menu content */}
           <div className="flex flex-col items-center justify-center flex-1">
 
             <p className="text-gray-500 mb-12 tracking-widest text-sm">
@@ -116,7 +116,7 @@ export default function Navbar() {
 
           </div>
 
-          {/* Bottom CTA */}
+          {/* CTA */}
           <div className="p-8 border-t border-white/10">
             <a
               href="https://wa.me/919391045855"
