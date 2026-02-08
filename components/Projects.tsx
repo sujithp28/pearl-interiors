@@ -27,12 +27,12 @@ export default function Projects() {
       </p>
 
       {/* Category Tabs */}
-      <div className="flex justify-center flex-wrap gap-4 mb-10">
+      <div className="flex justify-center flex-wrap gap-4 mb-12 px-4">
         {Object.keys(catalog).map((cat) => (
           <button
             key={cat}
             onClick={() => setCategory(cat as keyof typeof catalog)}
-            className={`px-6 py-2 rounded-full border transition-all ${
+            className={`px-5 py-2 rounded-full border transition-all text-sm md:text-base ${
               category === cat
                 ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]"
                 : "border-white/20 text-white/70 hover:border-[#D4AF37]/50"
@@ -43,20 +43,31 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Image Grid */}
-      <div className="projects-grid">
+      {/* ⭐ RESPONSIVE IMAGE GRID */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {catalog[category].map((img, i) => (
-          <div key={i} className="project-card luxury-card relative">
-            <div className="project-image-wrapper">
-              <img src={img} alt={`${category} design ${i + 1}`} className="project-image" />
+          <div
+            key={i}
+            className="bg-[#111] border border-white/10 rounded-2xl overflow-hidden group"
+          >
+            {/* Image wrapper with fixed ratio */}
+            <div className="relative w-full aspect-[4/3] overflow-hidden">
+              <img
+                src={img}
+                alt={`${category} design ${i + 1}`}
+                className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+              />
             </div>
-            <div className="project-title text-white">{category}</div>
-            <span className="absolute bottom-3 right-3 text-[11px] bg-black/70 text-[#D4AF37] px-2 py-1 rounded-full">
-              Concept Design
-            </span>
+
+            {/* Caption */}
+            <div className="p-4">
+              <h3 className="text-[#D4AF37] font-semibold">{category}</h3>
+              <p className="text-xs text-gray-400">Luxury Concept Design</p>
+            </div>
           </div>
         ))}
       </div>
     </section>
   );
 }
+
