@@ -70,7 +70,7 @@ export default function Navbar() {
 
       {/* ⭐ PREMIUM SIDE DRAWER MENU */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-gradient-to-b from-black to-zinc-900 text-white transform ${
+        className={`fixed top-0 right-0 h-full w-[85%] max-w-sm bg-gradient-to-b from-black to-zinc-900 text-white transform ${
           open ? "translate-x-0" : "translate-x-full"
         } transition-transform duration-500 z-[200] shadow-[0_0_40px_rgba(0,0,0,0.8)]`}
       >
@@ -100,18 +100,22 @@ export default function Navbar() {
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className="group text-left relative"
+              className="group text-left relative py-2 px-3 rounded-lg hover:bg-white/5 transition"
             >
               <span className="group-hover:text-[#D4AF37] transition">
                 {item.label}
               </span>
-              <span className="absolute left-0 -bottom-2 w-0 h-[1px] bg-[#D4AF37] transition-all duration-300 group-hover:w-16" />
+
+              <span className="absolute left-3 -bottom-2 w-0 h-[1px] bg-[#D4AF37] transition-all duration-300 group-hover:w-16" />
             </button>
           ))}
         </div>
 
+        {/* Divider */}
+        <div className="mx-6 h-[1px] bg-white/10" />
+
         {/* Bottom CTA */}
-        <div className="mt-auto p-6 border-t border-white/10">
+        <div className="p-6">
           <a
             href="https://wa.me/919391045855"
             target="_blank"
