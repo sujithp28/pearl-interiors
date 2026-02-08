@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const catalog: Record<string, string[]> = {
   Bedroom: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/bedroom${i + 1}.jpg`),
@@ -12,6 +12,41 @@ const catalog: Record<string, string[]> = {
 
 export default function Projects() {
   const [category, setCategory] = useState<keyof typeof catalog>("Bedroom");
+  const [index, setIndex] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Auto slide every 5 sec
+  useEffect(() => {
+    startAutoSlide();
+    return stopAutoSlide;
+  }, [category, index]);
+
+  const startAutoSlide = () => {
+    stopAutoSlide();
+    intervalRef.current = setInterval(() => {
+      setIndex((prev) =>
+        prev === catalog[category].length - 1 ? 0 : prev + 1
+      );
+    }, 5000);
+  };
+
+  const stopAutoSlide = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
+
+  const next = () => {
+    stopAutoSlide();
+    setIndex((prev) =>
+      prev === catalog[category].length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prev = () => {
+    stopAutoSlide();
+    setIndex((prev) =>
+      prev === 0 ? catalog[category].length - 1 : prev - 1
+    );
+  };
 
   return (
     <section
@@ -27,15 +62,18 @@ export default function Projects() {
       </p>
 
       {/* Category Tabs */}
-      <div className="flex justify-center flex-wrap gap-4 mb-12 px-4">
+      <div className="flex justify-center flex-wrap gap-4 mb-12">
         {Object.keys(catalog).map((cat) => (
           <button
             key={cat}
-            onClick={() => setCategory(cat as keyof typeof catalog)}
-            className={`px-5 py-2 rounded-full border transition-all text-sm md:text-base ${
+            onClick={() => {
+              setCategory(cat as keyof typeof catalog);
+              setIndex(0);
+            }}
+            className={`px-6 py-2 rounded-full border transition-all ${
               category === cat
-                ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.6)]"
-                : "border-white/20 text-white/70 hover:border-[#D4AF37]/50"
+                ? "border-[#D4AF37] text-[#D4AF37]"
+                : "border-white/20 text-white/70"
             }`}
           >
             {cat}
@@ -43,29 +81,46 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* ⭐ RESPONSIVE IMAGE GRID */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {catalog[category].map((img, i) => (
-          <div
-            key={i}
-            className="bg-[#111] border border-white/10 rounded-2xl overflow-hidden group"
-          >
-            {/* Image wrapper with fixed ratio */}
-            <div className="relative w-full aspect-[4/3] overflow-hidden">
-              <img
-                src={img}
-                alt={`${category} design ${i + 1}`}
-                className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-              />
-            </div>
+      {/* ⭐ Carousel */}
+      <div className="relative max-w-4xl mx-auto px-6">
 
-            {/* Caption */}
-            <div className="p-4">
-              <h3 className="text-[#D4AF37] font-semibold">{category}</h3>
-              <p className="text-xs text-gray-400">Luxury Concept Design</p>
-            </div>
-          </div>
-        ))}
+        {/* Image */}
+        <div className="overflow-hidden rounded-3xl luxury-card">
+          <img
+            src={catalog[category][index]}
+            alt="Interior Design"
+            className="w-full h-[420px] object-cover transition duration-700"
+          />
+        </div>
+
+        {/* Left Arrow */}
+        <button
+          onClick={prev}
+          className="absolute top-1/2 -left-2 -translate-y-1/2 bg-black/60 px-3 py-2 rounded-full"
+        >
+          ◀
+        </button>
+
+        {/* Right Arrow */}
+        <button
+          onClick={next}
+          className="absolute top-1/2 -right-2 -translate-y-1/2 bg-black/60 px-3 py-2 rounded-full"
+        >
+          ▶
+        </button>
+
+        {/* Dots */}
+        <div className="flex justify-center gap-2 mt-6">
+          {catalog[category].map((_, i) => (
+            <div
+              key={i}
+              className={`h-2 w-2 rounded-full ${
+                i === index ? "bg-[#D4AF37]" : "bg-white/30"
+              }`}
+            />
+          ))}
+        </div>
+
       </div>
     </section>
   );
