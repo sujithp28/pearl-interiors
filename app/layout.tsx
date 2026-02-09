@@ -1,4 +1,5 @@
 import "./globals.css";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export const metadata = {
   metadataBase: new URL("https://pearl-interiors.vercel.app"),
@@ -40,14 +41,13 @@ export const metadata = {
   },
 };
 
-/* ⭐ FIX 1 — Makes desktop render as desktop (VERY IMPORTANT) */
+/* ⭐ Mobile viewport fix */
 export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
 };
 
-/* ⭐ FIX 2 — Prevent hydration errors from Chrome extensions */
 export default function RootLayout({
   children,
 }: {
@@ -56,7 +56,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-black text-white overflow-x-hidden">
+
         {children}
+
+        {/* ⭐ GLOBAL FLOATING WHATSAPP BUTTON (VISIBLE ON ALL PAGES + MOBILE) */}
+        <FloatingWhatsApp />
+
       </body>
     </html>
   );
