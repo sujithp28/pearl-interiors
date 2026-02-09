@@ -1,8 +1,5 @@
-export const metadata = {
-  title: "Luxury Interior Designers in Hyderabad & Bangalore",
-  description:
-    "Premium home interiors, modular kitchens and wardrobes. 45-day delivery with warranty.",
-};
+"use client";
+
 import FAQ from "../components/FAQ";
 import Pricing from "../components/Pricing";
 import Testimonials from "../components/Testimonials";
@@ -16,7 +13,6 @@ import ConsultationForm from "../components/ConsultationForm";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import FadeInSection from "../components/FadeInSection";
-import FloatingWhatsApp from "../components/FloatingWhatsApp";
 import CitySEO from "../components/CitySEO";
 
 export default function Home() {
@@ -29,7 +25,7 @@ export default function Home() {
         <Hero />
       </FadeInSection>
 
-      {/* 2️⃣ TRUST FIRST */}
+      {/* 2️⃣ TRUST */}
       <FadeInSection>
         <WhyChooseUs />
       </FadeInSection>
@@ -39,12 +35,12 @@ export default function Home() {
         <Services />
       </FadeInSection>
 
-      {/* 4️⃣ SHOW WORK EARLY (VERY IMPORTANT) */}
+      {/* 4️⃣ PROJECTS */}
       <FadeInSection>
         <Projects />
       </FadeInSection>
 
-      {/* 5️⃣ SEO CITY CONTENT (MOVE DOWN) */}
+      {/* 5️⃣ CITY SEO */}
       <FadeInSection>
         <CitySEO />
       </FadeInSection>
@@ -53,31 +49,27 @@ export default function Home() {
       <FadeInSection>
         <ProcessTimeline />
       </FadeInSection>
-	
+
       <FadeInSection>
         <Pricing />
       </FadeInSection>
 
-      {/* ⭐ TESTIMONIALS */}
+      {/* 7️⃣ TESTIMONIALS */}
       <FadeInSection>
         <Testimonials />
       </FadeInSection>
 
-
-      {/* 7️⃣ LEAD CAPTURE FORM */}
+      {/* 8️⃣ LEAD FORM */}
       <FadeInSection>
-        <ConsultationForm />
+        <ConsultationForm onClose={() => {}} />
       </FadeInSection>
 
-      {/* 8️⃣ FINAL CONTACT CTA */}
+      {/* 9️⃣ CONTACT */}
       <FadeInSection>
         <Contact />
       </FadeInSection>
 
       <Footer />
-
-      {/* Floating WhatsApp Button */}
-      <FloatingWhatsApp />
     </>
   );
 }
