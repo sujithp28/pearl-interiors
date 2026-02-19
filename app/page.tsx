@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import FAQ from "../components/FAQ";
 import Pricing from "../components/Pricing";
 import Testimonials from "../components/Testimonials";
@@ -16,13 +18,15 @@ import FadeInSection from "../components/FadeInSection";
 import CitySEO from "../components/CitySEO";
 
 export default function Home() {
+  const [openForm, setOpenForm] = useState(false);
+
   return (
     <>
       <Navbar />
 
       {/* 1️⃣ HERO */}
       <FadeInSection>
-        <Hero />
+        <Hero openForm={() => setOpenForm(true)} />
       </FadeInSection>
 
       {/* 2️⃣ TRUST */}
@@ -59,18 +63,17 @@ export default function Home() {
         <Testimonials />
       </FadeInSection>
 
-      {/* 8️⃣ LEAD FORM */}
-      <FadeInSection>
-        <ConsultationForm onClose={() => {}} />
-      </FadeInSection>
-
-      {/* 9️⃣ CONTACT */}
+      {/* 8️⃣ CONTACT */}
       <FadeInSection>
         <Contact />
       </FadeInSection>
 
       <Footer />
+
+      {/* ⭐ GLOBAL MODAL (VERY IMPORTANT) */}
+      {openForm && (
+        <ConsultationForm onClose={() => setOpenForm(false)} />
+      )}
     </>
   );
 }
-
