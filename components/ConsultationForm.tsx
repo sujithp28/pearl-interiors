@@ -41,14 +41,15 @@ Preferred Call Time: ${form.time}`;
   };
 
   return (
-    <div className="fixed inset-0 z-[999] bg-black/80 backdrop-blur-sm flex items-start justify-center overflow-y-auto">
-      
-      {/* CLICK OUTSIDE CLOSE */}
-      <div className="absolute inset-0" onClick={onClose} />
-
+    <div
+      className="fixed inset-0 z-[999] bg-black/80 backdrop-blur-sm flex items-start justify-center overflow-y-auto"
+      onClick={onClose}   // ⭐ click outside closes modal
+    >
       {/* FORM CARD */}
-      <div className="relative mt-24 mb-24 w-full max-w-2xl mx-auto px-6 animate-slideDown">
-
+      <div
+        onClick={(e) => e.stopPropagation()}  // ⭐ prevent closing when clicking inside
+        className="relative mt-24 mb-24 w-full max-w-2xl mx-auto px-6 animate-slideDown"
+      >
         <div className="bg-gradient-to-b from-zinc-900 to-black border border-white/10 rounded-2xl p-8 shadow-2xl">
 
           {/* CLOSE BUTTON */}

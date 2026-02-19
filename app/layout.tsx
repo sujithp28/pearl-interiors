@@ -3,12 +3,10 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export const metadata = {
   metadataBase: new URL("https://pearl-interiors.vercel.app"),
-
   title:
     "Luxury Interior Designers in Hyderabad, Bangalore & Anantapur | Pearl Interiors",
   description:
     "Pearl Interiors is a premium interior design studio serving Hyderabad, Bangalore, and Anantapur, specializing in luxury apartments, villas, modular kitchens, and commercial interiors with complete client confidentiality.",
-
   keywords: [
     "Interior Designers in Hyderabad",
     "Interior Designers in Bangalore",
@@ -21,7 +19,6 @@ export const metadata = {
     "Commercial Interior Designers Hyderabad",
     "Best Interior Designers South India",
   ],
-
   openGraph: {
     title:
       "Pearl Interiors – Luxury Interior Designers in Hyderabad, Bangalore & Anantapur",
@@ -41,7 +38,6 @@ export const metadata = {
   },
 };
 
-/* ⭐ Mobile viewport fix */
 export const viewport = {
   width: "device-width",
   initialScale: 1,
@@ -54,14 +50,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="bg-black text-white overflow-x-hidden">
-
+    <html lang="en">
+      <body
+        suppressHydrationWarning
+        className="bg-black text-white overflow-x-hidden"
+      >
         {children}
-
-        {/* ⭐ GLOBAL FLOATING WHATSAPP BUTTON (VISIBLE ON ALL PAGES + MOBILE) */}
         <FloatingWhatsApp />
-
       </body>
     </html>
   );

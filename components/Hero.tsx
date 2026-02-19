@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import ConsultationForm from "./ConsultationForm";
 
 export default function Hero() {
@@ -18,16 +19,21 @@ export default function Hero() {
         id="home"
         className="relative min-h-screen flex items-center justify-center text-white text-center px-4 overflow-hidden"
       >
-        {/* Parallax Background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center hero-bg-animate"
+        {/* ⭐ HERO IMAGE (Next Image instead of CSS background) */}
+        <Image
+          src="/hero-bg.jpg"
+          alt="Luxury interior design living room"
+          fill
+          priority
+          quality={100}
+          sizes="100vw"
+          className="object-cover"
           style={{
-            backgroundImage: "url('/hero-bg.jpg')",
             transform: `translateY(${offset}px) scale(1.05)`,
           }}
         />
 
-        {/* ⭐ FIX — overlay should not block clicks */}
+        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 pointer-events-none" />
 
         {/* CONTENT */}
@@ -48,7 +54,6 @@ export default function Hero() {
             Experience elegance, comfort and timeless luxury.
           </p>
 
-          {/* ⭐ MAIN CTA */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
             <button
               onClick={() => setOpenForm(true)}
@@ -62,13 +67,11 @@ export default function Hero() {
               Schedule Free Design Consultation
             </button>
 
-            {/* ⭐ TRUST BADGE */}
             <div className="flex items-center justify-center text-sm text-gray-300">
               ⭐ Free consultation · No obligation · Quick response
             </div>
           </div>
 
-          {/* STATS */}
           <div className="flex flex-col md:flex-row justify-center gap-8 text-sm text-gray-300">
             <div>
               <div className="text-lg font-semibold text-white">750+</div>
@@ -86,7 +89,6 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* 🎉 POPUP FORM */}
       {openForm && <ConsultationForm onClose={() => setOpenForm(false)} />}
     </>
   );
