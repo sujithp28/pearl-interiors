@@ -24,13 +24,11 @@ const catalog: Record<string, string[]> = {
     (_, i) => `/projects/office/office${i + 1}.jpg`
   ),
 
-  // ✅ Fixed (was dining1.jpg but actual file is dine1.jpg)
   Dining: Array.from(
     { length: 4 },
     (_, i) => `/projects/dining/dine${i + 1}.jpg`
   ),
 
-  // ✅ Fixed (you have 5 wardrobe images)
   Wardrobe: Array.from(
     { length: 5 },
     (_, i) => `/projects/wardrobe/wardrobe${i + 1}.jpg`
@@ -45,12 +43,12 @@ export default function Projects() {
 
   const images = catalog[category];
 
-  // Reset slide when category changes
+  // Reset index when category changes
   useEffect(() => {
     setIndex(0);
   }, [category]);
 
-  // Auto slide every 5 sec
+  // Auto slide
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
@@ -68,11 +66,8 @@ export default function Projects() {
   return (
     <section
       id="designs"
-      className="relative py-28 bg-gradient-to-b from-zinc-900 via-black to-zinc-900 text-white overflow-hidden"
+      className="relative py-28 bg-gradient-to-b from-zinc-900 via-black to-zinc-900 text-white"
     >
-      {/* Golden Glow Background */}
-      <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#D4AF37]/10 blur-[120px] rounded-full"></div>
-
       <h2 className="text-4xl md:text-5xl font-serif text-center mb-4 text-[#D4AF37]">
         Design Styles
       </h2>
@@ -81,8 +76,8 @@ export default function Projects() {
         Explore our curated interior design styles across different spaces.
       </p>
 
-      {/* CATEGORY PILLS */}
-      <div className="flex justify-center flex-wrap gap-4 mb-16">
+      {/* CATEGORY BUTTONS */}
+      <div className="flex justify-center flex-wrap gap-4 mb-12">
         {Object.keys(catalog).map((cat) => (
           <button
             key={cat}
@@ -91,8 +86,8 @@ export default function Projects() {
             }
             className={`px-6 py-2 rounded-full border transition-all duration-300 ${
               category === cat
-                ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.5)]"
-                : "border-white/20 text-white/70 hover:border-[#D4AF37]/50 hover:text-white"
+                ? "border-[#D4AF37] text-[#D4AF37]"
+                : "border-white/20 text-white/70 hover:border-[#D4AF37]/50"
             }`}
           >
             {cat}
@@ -100,53 +95,48 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* CAROUSEL */}
+      {/* IMAGE CAROUSEL */}
       <div className="relative max-w-5xl mx-auto px-6">
 
-        {/* IMAGE (Responsive + Sharp) */}
-        <div className="relative w-full h-[240px] sm:h-[320px] md:h-[420px] lg:h-[500px] overflow-hidden rounded-3xl shadow-2xl">
+        <div className="relative w-full aspect-[16/9] overflow-hidden rounded-3xl shadow-2xl">
           <Image
+            key={images[index]}   // 🔥 important fix
             src={images[index]}
-            alt={`${category} interior design`}
-            fill
-            priority={index === 0}
+            alt={`${category} interior`}
+            width={1600}
+            height={900}
             quality={100}
-            sizes="(max-width: 640px) 100vw,
-                   (max-width: 1024px) 90vw,
-                   1200px"
-            className="object-cover transition-transform duration-[4000ms] ease-out scale-105"
+            className="w-full h-full object-cover"
           />
         </div>
 
-        {/* LEFT ARROW */}
+        {/* LEFT BUTTON */}
         <button
           onClick={prev}
-          className="absolute top-1/2 -left-4 md:-left-6 -translate-y-1/2
-          w-10 h-10 md:w-12 md:h-12 rounded-full
-          bg-white/10 backdrop-blur-md border border-white/20
-          hover:bg-white/20 transition flex items-center justify-center"
+          className="absolute top-1/2 -left-6 -translate-y-1/2
+          w-10 h-10 rounded-full bg-white/10 border border-white/20
+          flex items-center justify-center hover:bg-white/20"
         >
-          <span className="text-white text-xl">‹</span>
+          ‹
         </button>
 
-        {/* RIGHT ARROW */}
+        {/* RIGHT BUTTON */}
         <button
           onClick={next}
-          className="absolute top-1/2 -right-4 md:-right-6 -translate-y-1/2
-          w-10 h-10 md:w-12 md:h-12 rounded-full
-          bg-white/10 backdrop-blur-md border border-white/20
-          hover:bg-white/20 transition flex items-center justify-center"
+          className="absolute top-1/2 -right-6 -translate-y-1/2
+          w-10 h-10 rounded-full bg-white/10 border border-white/20
+          flex items-center justify-center hover:bg-white/20"
         >
-          <span className="text-white text-xl">›</span>
+          ›
         </button>
 
         {/* DOTS */}
-        <div className="flex justify-center gap-3 mt-8">
+        <div className="flex justify-center gap-3 mt-6">
           {images.map((_, i) => (
             <div
               key={i}
               onClick={() => setIndex(i)}
-              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+              className={`h-2 rounded-full cursor-pointer ${
                 i === index
                   ? "w-6 bg-[#D4AF37]"
                   : "w-2 bg-white/30"

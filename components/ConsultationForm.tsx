@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Props = {
   onClose: () => void;
@@ -16,38 +16,59 @@ export default function ConsultationForm({ onClose }: Props) {
     time: "",
   });
 
-  const handleChange = (e: any) => {
+  // 🔒 Prevent background scroll
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    window.addEventListener("keydown", handleEsc);
+
+    return () => {
+      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [onClose]);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const message = `New Private Consultation Request
+    const message = `✨ *New Private Consultation Request*
 
-Name: ${form.name}
-City: ${form.city}
-WhatsApp: ${form.phone}
-Property Type: ${form.property}
-Budget: ${form.budget}
-Preferred Call Time: ${form.time}`;
+👤 Name: ${form.name}
+📍 City: ${form.city}
+📱 WhatsApp: ${form.phone}
+🏠 Property Type: ${form.property}
+💰 Budget: ${form.budget}
+⏰ Preferred Call Time: ${form.time}
 
-    const whatsappURL = `https://wa.me/919391045855?text=${encodeURIComponent(
+— Pearl Interiors Website Lead`;
+
+    const whatsappURL = `https://wa.me/9391045855?text=${encodeURIComponent(
       message
     )}`;
 
-    window.open(whatsappURL, "_blank");
-    onClose(); // close popup after submit
+    // ✅ Direct redirect (no popup blocker issue)
+    window.location.href = whatsappURL;
+
+    onClose();
   };
 
   return (
     <div
       className="fixed inset-0 z-[999] bg-black/80 backdrop-blur-sm flex items-start justify-center overflow-y-auto"
-      onClick={onClose}   // ⭐ click outside closes modal
+      onClick={onClose}
     >
-      {/* FORM CARD */}
       <div
-        onClick={(e) => e.stopPropagation()}  // ⭐ prevent closing when clicking inside
+        onClick={(e) => e.stopPropagation()}
         className="relative mt-24 mb-24 w-full max-w-2xl mx-auto px-6 animate-slideDown"
       >
         <div className="bg-gradient-to-b from-zinc-900 to-black border border-white/10 rounded-2xl p-8 shadow-2xl">
@@ -162,4 +183,3 @@ Preferred Call Time: ${form.time}`;
     </div>
   );
 }
-
