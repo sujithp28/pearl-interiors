@@ -1,35 +1,67 @@
 "use client";
+
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const catalog: Record<string, string[]> = {
-  Bedroom: Array.from({ length: 4 }, (_, i) => `/projects/bedrooms/bedroom${i + 1}.jpg`),
-  Living: Array.from({ length: 4 }, (_, i) => `/projects/living/living${i + 1}.jpg`),
-  Kitchen: Array.from({ length: 4 }, (_, i) => `/projects/kitchen/kitchen${i + 1}.jpg`),
-  Office: Array.from({ length: 4 }, (_, i) => `/projects/office/office${i + 1}.jpg`),
-  Dining: Array.from({ length: 4 }, (_, i) => `/projects/dining/dining${i + 1}.jpg`),
-  Wardrobe: Array.from({ length: 4 }, (_, i) => `/projects/wardrobe/wardrobe${i + 1}.jpg`),
+  Bedroom: Array.from(
+    { length: 4 },
+    (_, i) => `/projects/bedrooms/bedroom${i + 1}.jpg`
+  ),
+
+  Living: Array.from(
+    { length: 4 },
+    (_, i) => `/projects/living/living${i + 1}.jpg`
+  ),
+
+  Kitchen: Array.from(
+    { length: 4 },
+    (_, i) => `/projects/kitchen/kitchen${i + 1}.jpg`
+  ),
+
+  Office: Array.from(
+    { length: 4 },
+    (_, i) => `/projects/office/office${i + 1}.jpg`
+  ),
+
+  // ✅ Fixed (was dining1.jpg but actual file is dine1.jpg)
+  Dining: Array.from(
+    { length: 4 },
+    (_, i) => `/projects/dining/dine${i + 1}.jpg`
+  ),
+
+  // ✅ Fixed (you have 5 wardrobe images)
+  Wardrobe: Array.from(
+    { length: 5 },
+    (_, i) => `/projects/wardrobe/wardrobe${i + 1}.jpg`
+  ),
 };
 
 export default function Projects() {
-  const [category, setCategory] = useState<keyof typeof catalog>("Bedroom");
+  const [category, setCategory] =
+    useState<keyof typeof catalog>("Bedroom");
+
   const [index, setIndex] = useState(0);
 
   const images = catalog[category];
 
-  // 👉 reset slide when category changes
+  // Reset slide when category changes
   useEffect(() => {
     setIndex(0);
   }, [category]);
 
-  // 👉 auto slide every 5 sec
+  // Auto slide every 5 sec
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 5000);
+
     return () => clearInterval(interval);
   }, [images.length]);
 
-  const next = () => setIndex((prev) => (prev + 1) % images.length);
+  const next = () =>
+    setIndex((prev) => (prev + 1) % images.length);
+
   const prev = () =>
     setIndex((prev) => (prev - 1 + images.length) % images.length);
 
@@ -38,7 +70,7 @@ export default function Projects() {
       id="designs"
       className="relative py-28 bg-gradient-to-b from-zinc-900 via-black to-zinc-900 text-white overflow-hidden"
     >
-      {/* 🌟 GOLDEN GLOW BACKGROUND */}
+      {/* Golden Glow Background */}
       <div className="absolute top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#D4AF37]/10 blur-[120px] rounded-full"></div>
 
       <h2 className="text-4xl md:text-5xl font-serif text-center mb-4 text-[#D4AF37]">
@@ -54,7 +86,9 @@ export default function Projects() {
         {Object.keys(catalog).map((cat) => (
           <button
             key={cat}
-            onClick={() => setCategory(cat as keyof typeof catalog)}
+            onClick={() =>
+              setCategory(cat as keyof typeof catalog)
+            }
             className={`px-6 py-2 rounded-full border transition-all duration-300 ${
               category === cat
                 ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.5)]"
@@ -66,34 +100,40 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* 🖼️ CAROUSEL */}
+      {/* CAROUSEL */}
       <div className="relative max-w-5xl mx-auto px-6">
 
-        {/* IMAGE */}
-        <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-          <img
+        {/* IMAGE (Responsive + Sharp) */}
+        <div className="relative w-full h-[240px] sm:h-[320px] md:h-[420px] lg:h-[500px] overflow-hidden rounded-3xl shadow-2xl">
+          <Image
             src={images[index]}
-            alt="Interior"
-            className="w-full h-[260px] md:h-[420px] object-cover transition-transform duration-[4000ms] ease-out scale-105"
+            alt={`${category} interior design`}
+            fill
+            priority={index === 0}
+            quality={100}
+            sizes="(max-width: 640px) 100vw,
+                   (max-width: 1024px) 90vw,
+                   1200px"
+            className="object-cover transition-transform duration-[4000ms] ease-out scale-105"
           />
         </div>
 
-        {/* ◀ LEFT ARROW */}
+        {/* LEFT ARROW */}
         <button
           onClick={prev}
-          className="absolute top-1/2 -left-4 md:-left-6 -translate-y-1/2 
-          w-10 h-10 md:w-12 md:h-12 rounded-full 
+          className="absolute top-1/2 -left-4 md:-left-6 -translate-y-1/2
+          w-10 h-10 md:w-12 md:h-12 rounded-full
           bg-white/10 backdrop-blur-md border border-white/20
           hover:bg-white/20 transition flex items-center justify-center"
         >
           <span className="text-white text-xl">‹</span>
         </button>
 
-        {/* ▶ RIGHT ARROW */}
+        {/* RIGHT ARROW */}
         <button
           onClick={next}
-          className="absolute top-1/2 -right-4 md:-right-6 -translate-y-1/2 
-          w-10 h-10 md:w-12 md:h-12 rounded-full 
+          className="absolute top-1/2 -right-4 md:-right-6 -translate-y-1/2
+          w-10 h-10 md:w-12 md:h-12 rounded-full
           bg-white/10 backdrop-blur-md border border-white/20
           hover:bg-white/20 transition flex items-center justify-center"
         >
@@ -118,4 +158,3 @@ export default function Projects() {
     </section>
   );
 }
-
