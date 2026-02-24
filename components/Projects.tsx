@@ -41,27 +41,35 @@ export default function Projects() {
 
   const [index, setIndex] = useState(0);
 
-  const images = catalog[category];
+  const images = catalog[category] || [];
 
   // Reset index when category changes
   useEffect(() => {
     setIndex(0);
   }, [category]);
 
-  // Auto slide
+  // Auto slide (safe version)
   useEffect(() => {
+    if (!images.length) return;
+
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images]);
 
-  const next = () =>
+  const next = () => {
+    if (!images.length) return;
     setIndex((prev) => (prev + 1) % images.length);
+  };
 
-  const prev = () =>
+  const prev = () => {
+    if (!images.length) return;
     setIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const currentImage = images[index];
 
   return (
     <section
@@ -99,15 +107,21 @@ export default function Projects() {
       <div className="relative max-w-5xl mx-auto px-6">
 
         <div className="relative w-full aspect-[16/9] overflow-hidden rounded-3xl shadow-2xl">
-          <Image
-            key={images[index]}   // 🔥 important fix
-            src={images[index]}
-            alt={`${category} interior`}
-            width={1600}
-            height={900}
-            quality={100}
-            className="w-full h-full object-cover"
-          />
+          {currentImage ? (
+            <Image
+              src={currentImage}
+              alt={`${category} interior`}
+              width={1600}
+              height={900}
+              quality={100}
+              className="w-full h-full object-cover"
+              priority
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-zinc-800 text-gray-400">
+              No image available
+            </div>
+          )}
         </div>
 
         {/* LEFT BUTTON */}
@@ -136,7 +150,7 @@ export default function Projects() {
             <div
               key={i}
               onClick={() => setIndex(i)}
-              className={`h-2 rounded-full cursor-pointer ${
+              className={`h-2 rounded-full cursor-pointer transition-all ${
                 i === index
                   ? "w-6 bg-[#D4AF37]"
                   : "w-2 bg-white/30"
