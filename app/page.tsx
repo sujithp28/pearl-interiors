@@ -59,9 +59,7 @@ export default function Home() {
       </FadeInSection>
 
       {/* 7️⃣ TESTIMONIALS */}
-      <FadeInSection>
-        <Testimonials />
-      </FadeInSection>
+
 
       {/* 8️⃣ CONTACT */}
       <FadeInSection>
