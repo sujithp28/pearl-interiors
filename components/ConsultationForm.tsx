@@ -52,7 +52,7 @@ export default function ConsultationForm({ onClose }: Props) {
 
 — Pearl Interiors Website Lead`;
 
-    const whatsappURL = `https://wa.me/9391045855?text=${encodeURIComponent(
+    const whatsappURL = `https://wa.me/9876543210?text=${encodeURIComponent(
       message
     )}`;
 
