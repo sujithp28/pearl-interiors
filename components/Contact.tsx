@@ -11,7 +11,7 @@ export default function Contact() {
       </p>
 
       <a
-        href="https://wa.me/919391045855"
+        href="https://wa.me/919398781662"
         className="inline-block mt-4 px-8 py-3 rounded-full
                    bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
                    text-black font-medium
