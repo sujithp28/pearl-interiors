@@ -1,7 +1,7 @@
 "use client";
 
 export default function FloatingWhatsApp() {
-  const phoneNumber = "919391045855"; // 🔴 Your real number
+  const phoneNumber = "919398781662"; // 🔴 Your real number
 
   const message =
     "Hi Pearl Interiors, I would like to discuss my interior project.";

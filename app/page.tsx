@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import FAQ from "../components/FAQ";
 import Pricing from "../components/Pricing";
-import Testimonials from "../components/Testimonials";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Services from "../components/Services";
