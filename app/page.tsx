@@ -57,13 +57,11 @@ export default function Home() {
         <Pricing />
       </FadeInSection>
 
-      {/* 7️⃣ TESTIMONIALS */}
-
-
-      {/* 8️⃣ CONTACT */}
-      <FadeInSection>
-        <Contact />
-      </FadeInSection>
+      <div id="contact">
+        <FadeInSection>
+          <Contact />
+        </FadeInSection>
+      </div>
 
       <Footer />
 
