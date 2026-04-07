@@ -117,7 +117,7 @@ export default function Navbar() {
         {/* Bottom CTA */}
         <div className="p-6">
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/919398781662"
             target="_blank"
             className="block text-center bg-[#D4AF37] text-black font-semibold py-4 rounded-full text-lg shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 transition"
           >

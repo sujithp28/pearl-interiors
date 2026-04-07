@@ -22,7 +22,7 @@ export default function AnantapurSEOPage() {
           </p>
 
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/919398781662"
             className="inline-block mt-4 px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
                        text-black font-medium shadow-[0_0_25px_rgba(255,215,0,0.6)]
                        hover:shadow-[0_0_45px_rgba(255,215,0,0.9)]

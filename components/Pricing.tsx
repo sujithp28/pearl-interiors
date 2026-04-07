@@ -80,7 +80,7 @@ export default function Pricing() {
               </ul>
 
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919398781662"
                 target="_blank"
                 className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-full transition"
               >
