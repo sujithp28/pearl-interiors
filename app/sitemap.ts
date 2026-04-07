@@ -1,21 +1,20 @@
 export default function sitemap() {
   return [
     {
-      url: "https://pearlinteriors.in",
+      url: "https://thepearlinteriors.com",
       lastModified: new Date(),
     },
     {
-      url: "https://pearlinteriors.in/hyderabad-interior-designers",
+      url: "https://thepearlinteriors.com/#services",
       lastModified: new Date(),
     },
     {
-      url: "https://pearlinteriors.in/bangalore-interior-designers",
+      url: "https://thepearlinteriors.com/#designs",
       lastModified: new Date(),
     },
     {
-      url: "https://pearlinteriors.in/tirupati-interior-designers",
+      url: "https://thepearlinteriors.com/#contact",
       lastModified: new Date(),
     },
   ];
 }
-
