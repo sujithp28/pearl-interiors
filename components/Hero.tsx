@@ -34,7 +34,8 @@ export default function Hero({ openForm }: { openForm: () => void }) {
         src="/hero-bg.jpg"
         alt="Luxury interior design living room"
         fill
-        priority
+        preload
+        loading="eager"
         quality={100}
         sizes="100vw"
         className="object-cover"

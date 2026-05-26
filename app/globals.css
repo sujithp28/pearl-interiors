@@ -77,7 +77,7 @@ html {
 
 /* Primary CTA button */
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-pearl-gold via-[#e8c84a] to-pearl-gold px-8 py-3 font-semibold text-black shadow-gold-sm transition-all duration-300 hover:scale-105 hover:shadow-gold-lg;
+  @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-pearl-gold via-[#e8c84a] to-pearl-gold px-6 py-4 sm:px-8 sm:py-3 font-semibold text-black shadow-gold-sm transition-all duration-300 hover:scale-105 hover:shadow-gold-lg;
 }
 
 .btn-outline {

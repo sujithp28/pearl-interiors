@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -21,6 +21,56 @@ export default function Navbar() {
   const isHomePage = pathname === "/";
 
   useBodyScrollLock(open);
+
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const closeBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const prevActive = document.activeElement as HTMLElement | null;
+    // focus the close button when menu opens
+    closeBtnRef.current?.focus();
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      const container = menuRef.current;
+      if (!container) return;
+      const focusable = Array.from(
+        container.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => el.offsetParent !== null);
+
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement as HTMLElement;
+
+      if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKey);
+    return () => {
+      document.removeEventListener("keydown", handleKey);
+      prevActive?.focus?.();
+    };
+  }, [open]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -104,6 +154,10 @@ export default function Navbar() {
       )}
 
       <div
+        ref={menuRef}
+        role="dialog"
+        aria-modal={open}
+        aria-label="Mobile menu"
         className={`fixed top-0 right-0 z-[200] h-full w-[85%] max-w-sm transform bg-gradient-to-b from-black to-zinc-900 text-white shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-transform duration-500 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
@@ -116,6 +170,7 @@ export default function Navbar() {
           <p className="mt-1 text-xs text-gray-500">Pearl Interiors</p>
 
           <button
+            ref={closeBtnRef}
             type="button"
             aria-label="Close menu"
             onClick={() => setOpen(false)}

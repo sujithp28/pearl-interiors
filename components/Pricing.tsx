@@ -25,8 +25,8 @@ const plans = [
     features: [
       "Everything in Essential",
       "Premium Modular Kitchen",
-      "Wardrobes (All Rooms)",
-      "Designer False Ceiling",
+          "Wardrobes (All Rooms)",
+          "Designer False Ceilings",
       "Lighting & Decor",
       "50 Days Delivery",
     ],
