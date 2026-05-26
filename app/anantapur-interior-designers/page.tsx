@@ -1,7 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
-import { PHONE_NUMBER } from "@/utils/constants";
+import { PHONE_NUMBER, SITE_URL } from "@/utils/constants";
+
+export const metadata = {
+  title: "Interior Designers in Anantapur | Pearl Interiors",
+  description:
+    "Premium interiors in Anantapur for homes, villas, modular kitchens, wardrobes, and commercial spaces with confidential turnkey execution.",
+  alternates: {
+    canonical: `${SITE_URL}/anantapur-interior-designers`,
+  },
+};
 
 export default function AnantapurSEOPage() {
   return (

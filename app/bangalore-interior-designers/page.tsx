@@ -1,7 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
-import { PHONE_NUMBER } from "@/utils/constants";
+import { PHONE_NUMBER, SITE_URL } from "@/utils/constants";
+
+export const metadata = {
+  title: "Luxury Interior Designers in Bangalore | Pearl Interiors",
+  description:
+    "Bespoke apartment, villa, modular kitchen, and commercial interiors in Bangalore with premium materials and turnkey execution.",
+  alternates: {
+    canonical: `${SITE_URL}/bangalore-interior-designers`,
+  },
+};
 
 export default function BangaloreSEOPage() {
   return (

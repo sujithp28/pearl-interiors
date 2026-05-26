@@ -56,7 +56,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning
-        className="bg-black text-white overflow-x-hidden"
+        className="bg-black text-white overflow-x-hidden pb-16 md:pb-0"
       >
         {children}
         <LocalSchema />

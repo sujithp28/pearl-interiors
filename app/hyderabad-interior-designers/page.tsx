@@ -1,7 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
-import { PHONE_NUMBER } from "@/utils/constants";
+import { PHONE_NUMBER, SITE_URL } from "@/utils/constants";
+
+export const metadata = {
+  title: "Turnkey Interior Designers in Hyderabad | Pearl Interiors",
+  description:
+    "Premium turnkey interiors in Hyderabad for apartments, villas, modular kitchens, and commercial spaces with complete privacy and project management.",
+  alternates: {
+    canonical: `${SITE_URL}/hyderabad-interior-designers`,
+  },
+};
 
 export default function HyderabadSEOPage() {
   return (

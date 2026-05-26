@@ -51,7 +51,7 @@ export default function Hero({ openForm }: { openForm: () => void }) {
           Experience elegance, comfort and timeless luxury.
         </p>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
           {/* ⭐ THIS BUTTON NOW OPENS GLOBAL MODAL */}
           <button
             onClick={openForm}
@@ -65,9 +65,22 @@ export default function Hero({ openForm }: { openForm: () => void }) {
             Schedule Free Design Consultation
           </button>
 
-          <div className="flex items-center justify-center text-sm text-gray-300">
-            ⭐ Free consultation · No obligation · Quick response
-          </div>
+          <a
+            href="#designs"
+            className="px-8 py-4 rounded border border-white/25 font-semibold text-white
+                       hover:border-[#D4AF37] hover:text-[#D4AF37]
+                       transition-all duration-300"
+          >
+            View Design Gallery
+          </a>
+        </div>
+
+        <div className="mb-12 flex flex-wrap items-center justify-center gap-3 text-xs text-gray-200">
+          {["Free consultation", "Turnkey execution", "Premium materials", "45–60 day planning"].map((item) => (
+            <span key={item} className="rounded-full border border-white/15 bg-black/30 px-4 py-2">
+              {item}
+            </span>
+          ))}
         </div>
 
         <div className="flex flex-col md:flex-row justify-center gap-8 text-sm text-gray-300">

@@ -53,7 +53,7 @@ export default function Pricing() {
           Interior Packages & Pricing
         </h2>
         <p className="text-gray-400 mb-16">
-          Transparent pricing tailored for different home sizes and lifestyles.
+          Indicative starting ranges for different home sizes and lifestyles.
         </p>
 
         <div className="grid md:grid-cols-3 gap-10">
@@ -91,6 +91,11 @@ export default function Pricing() {
             </motion.div>
           ))}
         </div>
+
+        <p className="mx-auto mt-10 max-w-3xl text-sm leading-relaxed text-gray-500">
+          Final pricing depends on site measurements, material selection, hardware brands,
+          finish complexity, civil/electrical scope, and customization requirements.
+        </p>
       </div>
     </section>
   );

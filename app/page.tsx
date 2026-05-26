@@ -15,6 +15,8 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import FadeInSection from "../components/FadeInSection";
 import CitySEO from "../components/CitySEO";
+import TrustProof from "../components/TrustProof";
+import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   const [openForm, setOpenForm] = useState(false);
@@ -31,6 +33,10 @@ export default function Home() {
       {/* 2️⃣ TRUST */}
       <FadeInSection>
         <WhyChooseUs />
+      </FadeInSection>
+
+      <FadeInSection>
+        <TrustProof />
       </FadeInSection>
 
       {/* 3️⃣ SERVICES */}
@@ -55,6 +61,10 @@ export default function Home() {
 
       <FadeInSection>
         <Pricing />
+      </FadeInSection>
+
+      <FadeInSection>
+        <Testimonials />
       </FadeInSection>
 
       <FadeInSection>

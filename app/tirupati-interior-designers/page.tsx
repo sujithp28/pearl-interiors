@@ -1,7 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
-import { PHONE_NUMBER } from "@/utils/constants";
+import { PHONE_NUMBER, SITE_URL } from "@/utils/constants";
+
+export const metadata = {
+  title: "Interior Designers in Tirupati | Pearl Interiors",
+  description:
+    "Turnkey home and commercial interior design services in Tirupati for apartments, villas, modular kitchens, and wardrobes.",
+  alternates: {
+    canonical: `${SITE_URL}/tirupati-interior-designers`,
+  },
+};
 
 export default function TirupatiSEOPage() {
   return (
