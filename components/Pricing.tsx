@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { CheckIcon } from "@heroicons/react/24/solid";
 import { PHONE_NUMBER } from "@/utils/constants";
+import SectionHeader from "@/components/SectionHeader";
 
 const plans = [
   {
@@ -47,36 +49,41 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section className="py-24 bg-gradient-to-b from-black to-[#0a0a0a] text-white">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-4xl md:text-5xl font-serif text-yellow-500 mb-6">
-          Interior Packages & Pricing
-        </h2>
-        <p className="text-gray-400 mb-16">
-          Indicative starting ranges for different home sizes and lifestyles.
-        </p>
+    <section id="pricing" className="bg-gradient-to-b from-black to-pearl-dark py-24 text-white">
+      <div className="mx-auto max-w-7xl px-6 text-center">
+        <SectionHeader
+          eyebrow="Packages"
+          title="Interior Packages & Pricing"
+          subtitle="Indicative starting ranges for different home sizes and lifestyles."
+        />
 
-        <div className="grid md:grid-cols-3 gap-10">
-          {plans.map((plan, i) => (
+        <div className="grid gap-10 md:grid-cols-3">
+          {plans.map((plan) => (
             <motion.div
-              key={i}
-              whileHover={{ scale: 1.05 }}
-              className={`p-8 rounded-2xl border ${
+              key={plan.name}
+              whileHover={{ scale: 1.02 }}
+              className={`relative rounded-2xl border bg-[#111] p-8 ${
                 plan.highlight
-                  ? "border-yellow-500 shadow-lg shadow-yellow-500/20"
+                  ? "border-pearl-gold shadow-lg shadow-pearl-gold/20"
                   : "border-gray-800"
-              } bg-[#111]`}
+              }`}
             >
-              <h3 className="text-2xl font-semibold text-yellow-500 mb-2">
-                {plan.name}
-              </h3>
+              {plan.highlight && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-pearl-gold px-4 py-1 text-xs font-bold uppercase tracking-wide text-black">
+                  Most Popular
+                </span>
+              )}
 
-              <p className="text-3xl font-bold mb-2">{plan.price}</p>
-              <p className="text-gray-400 mb-6">{plan.subtitle}</p>
+              <h3 className="mb-2 text-2xl font-semibold text-pearl-gold">{plan.name}</h3>
+              <p className="mb-2 text-3xl font-bold">{plan.price}</p>
+              <p className="mb-6 text-gray-400">{plan.subtitle}</p>
 
-              <ul className="space-y-3 text-gray-300 mb-8">
-                {plan.features.map((f, idx) => (
-                  <li key={idx}>✔ {f}</li>
+              <ul className="mb-8 space-y-3 text-left text-gray-300">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2">
+                    <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-pearl-gold" />
+                    <span>{feature}</span>
+                  </li>
                 ))}
               </ul>
 
@@ -84,7 +91,7 @@ export default function Pricing() {
                 href={`https://wa.me/${PHONE_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-full transition"
+                className="btn-primary w-full sm:w-auto"
               >
                 Get Free Quote
               </a>

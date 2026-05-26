@@ -1,46 +1,46 @@
+import Link from "next/link";
+import SectionHeader from "@/components/SectionHeader";
+
+const cities: { name: string; href?: string }[] = [
+  { name: "Hyderabad", href: "/hyderabad-interior-designers" },
+  { name: "Bangalore", href: "/bangalore-interior-designers" },
+  { name: "Anantapur", href: "/anantapur-interior-designers" },
+  { name: "Tirupati", href: "/tirupati-interior-designers" },
+  { name: "Vijayawada" },
+  { name: "Guntur" },
+  { name: "Kurnool" },
+];
+
 export default function CitySEO() {
-  const cities = [
-    "Hyderabad",
-    "Bangalore",
-    "Anantapur",
-    "Tirupati",
-    "Vijayawada",
-    "Guntur",
-    "Kurnool",
-  ];
-
   return (
-    <section className="pt-24 pb-32 bg-gradient-to-b from-black to-[#0a0a0a] text-white">
-      <div className="max-w-6xl mx-auto px-6 text-center">
+    <section className="bg-gradient-to-b from-black to-pearl-dark pb-32 pt-24 text-white">
+      <div className="mx-auto max-w-6xl px-6 text-center">
+        <SectionHeader
+          title="Luxury Interior Designers Across South India"
+          subtitle="Pearl Interiors delivers premium residential and commercial interior design services across major cities in South India. From modular kitchens to full home interiors, we provide end-to-end execution with strict confidentiality, premium materials, and on-time delivery."
+        />
 
-        <h2 className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-8">
-          Luxury Interior Designers Across South India
-        </h2>
+        <div className="mt-12 flex flex-wrap justify-center gap-4">
+          {cities.map((city) => {
+            const className =
+              "rounded-full border border-white/10 px-6 py-3 text-gray-300 transition duration-300 hover:border-pearl-gold hover:text-pearl-gold hover:shadow-gold-sm";
 
-        <p className="text-gray-400 leading-relaxed max-w-4xl mx-auto">
-          Pearl Interiors delivers premium residential and commercial interior
-          design services across major cities in South India. From modular
-          kitchens to full home interiors, we provide end-to-end execution with
-          strict confidentiality, premium materials, and on-time delivery.
-        </p>
+            if (city.href) {
+              return (
+                <Link key={city.name} href={city.href} className={className}>
+                  {city.name}
+                </Link>
+              );
+            }
 
-        {/* Location Chips */}
-        <div className="flex flex-wrap justify-center gap-4 mt-12">
-          {cities.map((city, i) => (
-            <span
-              key={i}
-              className="px-6 py-3 border border-white/10 rounded-full 
-              text-gray-300 hover:border-[#D4AF37] hover:text-[#D4AF37]
-              hover:shadow-[0_0_20px_rgba(212,175,55,0.25)]
-              transition duration-300"
-            >
-              {city}
-            </span>
-          ))}
+            return (
+              <span key={city.name} className={className}>
+                {city.name}
+              </span>
+            );
+          })}
         </div>
-
       </div>
     </section>
   );
 }
-

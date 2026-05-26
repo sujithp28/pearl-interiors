@@ -5,23 +5,21 @@ import Services from "../components/Services";
 import Projects from "../components/Projects";
 import WhyChooseUs from "../components/WhyChooseUs";
 import ProcessTimeline from "../components/ProcessTimeline";
-import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import FadeInSection from "../components/FadeInSection";
 import CitySEO from "../components/CitySEO";
 import TrustProof from "../components/TrustProof";
 import Testimonials from "../components/Testimonials";
 import HomeHeroSection from "../components/HomeHeroSection";
+import ContactSection from "../components/ContactSection";
 
 export default function Home() {
   return (
     <>
       <Navbar />
 
-      {/* 1️⃣ HERO */}
       <HomeHeroSection />
 
-      {/* 2️⃣ TRUST */}
       <FadeInSection>
         <WhyChooseUs />
       </FadeInSection>
@@ -30,22 +28,18 @@ export default function Home() {
         <TrustProof />
       </FadeInSection>
 
-      {/* 3️⃣ SERVICES */}
       <FadeInSection>
         <Services />
       </FadeInSection>
 
-      {/* 4️⃣ PROJECTS */}
       <FadeInSection>
         <Projects />
       </FadeInSection>
 
-      {/* 5️⃣ CITY SEO */}
       <FadeInSection>
         <CitySEO />
       </FadeInSection>
 
-      {/* 6️⃣ PROCESS */}
       <FadeInSection>
         <ProcessTimeline />
       </FadeInSection>
@@ -64,7 +58,7 @@ export default function Home() {
 
       <div id="contact">
         <FadeInSection>
-          <Contact />
+          <ContactSection />
         </FadeInSection>
       </div>
 

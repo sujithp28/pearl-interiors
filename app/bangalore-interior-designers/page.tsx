@@ -18,9 +18,9 @@ export default function BangaloreSEOPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="py-24 bg-gradient-to-b from-zinc-900 via-black to-zinc-900 text-white">
+      <section className="pt-28 pb-24 bg-gradient-to-b from-zinc-900 via-black to-zinc-900 text-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-4">
+          <h1 className="text-4xl md:text-5xl font-serif text-pearl-gold mb-4">
             Professional Turnkey Interior Designers in Bangalore
           </h1>
 
@@ -33,10 +33,7 @@ export default function BangaloreSEOPage() {
 
           <a
             href={`https://wa.me/${PHONE_NUMBER}`}
-            className="inline-block mt-4 px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
-                       text-black font-medium shadow-[0_0_25px_rgba(255,215,0,0.6)]
-                       hover:shadow-[0_0_45px_rgba(255,215,0,0.9)]
-                       hover:scale-105 transition-all duration-300"
+            className="btn-primary mt-4"
           >
             Talk to Our Bangalore Design Expert
           </a>
@@ -46,7 +43,7 @@ export default function BangaloreSEOPage() {
       {/* SERVICE AREAS */}
       <section className="py-20 bg-black text-white">
         <div className="max-w-6xl mx-auto px-6 text-center mb-12">
-          <h2 className="text-3xl font-serif text-[#D4AF37] mb-4">
+          <h2 className="text-3xl font-serif text-pearl-gold mb-4">
             Serving Prime Locations Across Bangalore
           </h2>
           <p className="text-gray-400">
@@ -57,7 +54,7 @@ export default function BangaloreSEOPage() {
 
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
           <div>
-            <h3 className="text-xl text-[#D4AF37] mb-2">Apartment Interior Designers in Bangalore</h3>
+            <h3 className="text-xl text-pearl-gold mb-2">Apartment Interior Designers in Bangalore</h3>
             <p className="text-gray-400">
               Modern apartment interiors with modular kitchens, wardrobes, lighting,
               false ceilings, and space-optimized layouts.
@@ -65,7 +62,7 @@ export default function BangaloreSEOPage() {
           </div>
 
           <div>
-            <h3 className="text-xl text-[#D4AF37] mb-2">Villa Interior Designers in Bangalore</h3>
+            <h3 className="text-xl text-pearl-gold mb-2">Villa Interior Designers in Bangalore</h3>
             <p className="text-gray-400">
               Bespoke villa interiors with luxury materials, custom furniture,
               vastu-aligned planning, and turnkey execution.
@@ -73,7 +70,7 @@ export default function BangaloreSEOPage() {
           </div>
 
           <div>
-            <h3 className="text-xl text-[#D4AF37] mb-2">Commercial Interior Designers in Bangalore</h3>
+            <h3 className="text-xl text-pearl-gold mb-2">Commercial Interior Designers in Bangalore</h3>
             <p className="text-gray-400">
               Office, startup, showroom, clinic, and retail interiors designed for
               productivity, branding, and long-term durability.
@@ -85,7 +82,7 @@ export default function BangaloreSEOPage() {
       {/* WHY CHOOSE */}
       <section className="py-20 bg-zinc-900 text-white">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-serif text-[#D4AF37] mb-4">
+          <h2 className="text-3xl font-serif text-pearl-gold mb-4">
             Why Choose Pearl Interiors in Bangalore?
           </h2>
           <ul className="text-gray-300 space-y-3">
@@ -102,7 +99,7 @@ export default function BangaloreSEOPage() {
       {/* FAQ */}
       <section className="py-20 bg-black text-white">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-serif text-[#D4AF37] text-center mb-8">
+          <h2 className="text-3xl font-serif text-pearl-gold text-center mb-8">
             Frequently Asked Questions – Interior Designers in Bangalore
           </h2>
 

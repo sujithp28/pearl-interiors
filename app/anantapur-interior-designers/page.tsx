@@ -18,9 +18,9 @@ export default function AnantapurSEOPage() {
       <Navbar />
 
       {/* HERO */}
-      <section className="py-24 bg-gradient-to-b from-zinc-900 via-black to-zinc-900 text-white">
+      <section className="pt-28 pb-24 bg-gradient-to-b from-zinc-900 via-black to-zinc-900 text-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-4">
+          <h1 className="text-4xl md:text-5xl font-serif text-pearl-gold mb-4">
             Interior Designers in Anantapur – Villas, Apartments & Commercial Spaces
           </h1>
 
@@ -33,10 +33,7 @@ export default function AnantapurSEOPage() {
 
           <a
             href={`https://wa.me/${PHONE_NUMBER}`}
-            className="inline-block mt-4 px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
-                       text-black font-medium shadow-[0_0_25px_rgba(255,215,0,0.6)]
-                       hover:shadow-[0_0_45px_rgba(255,215,0,0.9)]
-                       hover:scale-105 transition-all duration-300"
+            className="btn-primary mt-4"
           >
             Get a Free Site Visit in Anantapur
           </a>
@@ -47,7 +44,7 @@ export default function AnantapurSEOPage() {
       <section className="py-20 bg-black text-white">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
           <div>
-            <h2 className="text-xl text-[#D4AF37] mb-2">Villa Interior Designers in Anantapur</h2>
+            <h2 className="text-xl text-pearl-gold mb-2">Villa Interior Designers in Anantapur</h2>
             <p className="text-gray-400">
               Luxury villa interiors with premium materials, vastu-compliant layouts,
               custom furniture, and complete project execution.
@@ -55,7 +52,7 @@ export default function AnantapurSEOPage() {
           </div>
 
           <div>
-            <h2 className="text-xl text-[#D4AF37] mb-2">Apartment Interior Designers in Anantapur</h2>
+            <h2 className="text-xl text-pearl-gold mb-2">Apartment Interior Designers in Anantapur</h2>
             <p className="text-gray-400">
               Modern apartment interiors including modular kitchens, wardrobes,
               false ceilings, lighting, and space-optimized layouts.
@@ -63,7 +60,7 @@ export default function AnantapurSEOPage() {
           </div>
 
           <div>
-            <h2 className="text-xl text-[#D4AF37] mb-2">Commercial Interior Designers in Anantapur</h2>
+            <h2 className="text-xl text-pearl-gold mb-2">Commercial Interior Designers in Anantapur</h2>
             <p className="text-gray-400">
               Office, showroom, hospital, and retail interiors designed for functionality,
               branding, and long-term durability.
@@ -75,7 +72,7 @@ export default function AnantapurSEOPage() {
       {/* WHY CHOOSE */}
       <section className="py-20 bg-zinc-900 text-white">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-serif text-[#D4AF37] mb-4">
+          <h2 className="text-3xl font-serif text-pearl-gold mb-4">
             Why Choose Pearl Interiors in Anantapur?
           </h2>
           <ul className="text-gray-300 space-y-3">
@@ -92,7 +89,7 @@ export default function AnantapurSEOPage() {
       {/* FAQ */}
       <section className="py-20 bg-black text-white">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl font-serif text-[#D4AF37] text-center mb-8">
+          <h2 className="text-3xl font-serif text-pearl-gold text-center mb-8">
             Frequently Asked Questions – Interior Designers in Anantapur
           </h2>
 

@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -7,16 +8,28 @@ export default function Hero({ openForm }: { openForm: () => void }) {
 
   useEffect(() => {
     const handleScroll = () => setOffset(window.scrollY * 0.2);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const trustBadges = [
+    "Free consultation",
+    "Turnkey execution",
+    "Premium materials",
+    "45–60 day planning",
+  ];
+
+  const stats = [
+    { value: "750+", label: "Bespoke Interiors Delivered" },
+    { value: "15 Years", label: "Warranty on Kitchens & Wardrobes" },
+    { value: "South India", label: "AP · Telangana · Karnataka" },
+  ];
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center text-white text-center px-4 overflow-hidden"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pt-20 text-center text-white"
     >
-      {/* HERO IMAGE */}
       <Image
         src="/hero-bg.jpg"
         alt="Luxury interior design living room"
@@ -30,72 +43,50 @@ export default function Hero({ openForm }: { openForm: () => void }) {
         }}
       />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80 pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80" />
 
-      {/* CONTENT */}
       <div className="relative z-10 max-w-4xl">
-        <h1 className="text-4xl md:text-6xl font-serif mb-4 tracking-wide
-                       text-transparent bg-clip-text
-                       bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-200
-                       drop-shadow-[0_0_25px_rgba(255,215,120,0.35)]">
+        <h1 className="mb-4 font-serif text-4xl tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#f5e6a8] via-pearl-gold to-[#f5e6a8] drop-shadow-[0_0_25px_rgba(212,175,55,0.35)] md:text-6xl">
           Pearl Interiors
         </h1>
 
-        <p className="max-w-2xl mx-auto mb-3 text-gray-200 text-sm md:text-base tracking-wide">
+        <p className="mx-auto mb-3 max-w-2xl text-sm tracking-wide text-gray-200 md:text-base">
           Luxury Interior Designers in Hyderabad & Bangalore
         </p>
 
-        <p className="max-w-xl mx-auto mb-8 text-gray-400">
+        <p className="mx-auto mb-8 max-w-xl text-gray-400">
           Bespoke interiors for apartments, villas & commercial spaces.
           Experience elegance, comfort and timeless luxury.
         </p>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-          {/* ⭐ THIS BUTTON NOW OPENS GLOBAL MODAL */}
-          <button
-            onClick={openForm}
-            className="luxury-glow px-8 py-4 rounded font-semibold text-black
-                       bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
-                       shadow-[0_0_18px_rgba(255,215,0,0.45)]
-                       hover:shadow-[0_0_40px_rgba(255,215,0,0.9)]
-                       hover:scale-[1.05]
-                       transition-all duration-300"
-          >
+        <div className="mb-8 flex flex-col justify-center gap-4 sm:flex-row">
+          <button type="button" onClick={openForm} className="luxury-glow btn-primary px-8 py-4">
             Schedule Free Design Consultation
           </button>
 
-          <a
-            href="#designs"
-            className="px-8 py-4 rounded border border-white/25 font-semibold text-white
-                       hover:border-[#D4AF37] hover:text-[#D4AF37]
-                       transition-all duration-300"
-          >
+          <a href="#designs" className="btn-outline px-8 py-4">
             View Design Gallery
           </a>
         </div>
 
         <div className="mb-12 flex flex-wrap items-center justify-center gap-3 text-xs text-gray-200">
-          {["Free consultation", "Turnkey execution", "Premium materials", "45–60 day planning"].map((item) => (
-            <span key={item} className="rounded-full border border-white/15 bg-black/30 px-4 py-2">
+          {trustBadges.map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-white/15 bg-black/30 px-4 py-2"
+            >
               {item}
             </span>
           ))}
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center gap-8 text-sm text-gray-300">
-          <div>
-            <div className="text-lg font-semibold text-white">750+</div>
-            Bespoke Interiors Delivered
-          </div>
-          <div>
-            <div className="text-lg font-semibold text-white">5+ Years</div>
-            Trusted Design Expertise
-          </div>
-          <div>
-            <div className="text-lg font-semibold text-white">South India</div>
-            AP · Telangana · Karnataka
-          </div>
+        <div className="flex flex-col justify-center gap-8 text-sm text-gray-300 md:flex-row">
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <div className="text-lg font-semibold text-white">{stat.value}</div>
+              {stat.label}
+            </div>
+          ))}
         </div>
       </div>
     </section>

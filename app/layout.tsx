@@ -1,8 +1,21 @@
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import LocalSchema from "@/components/LocalSchema";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { SITE_URL } from "@/utils/constants";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -44,7 +57,6 @@ export const metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -53,10 +65,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body
         suppressHydrationWarning
-        className="bg-black text-white overflow-x-hidden pb-16 md:pb-0"
+        className="overflow-x-hidden bg-black pb-16 font-sans text-white md:pb-0"
       >
         {children}
         <LocalSchema />

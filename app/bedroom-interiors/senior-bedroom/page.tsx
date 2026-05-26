@@ -19,9 +19,9 @@ export default function SeniorBedroomPage() {
       <Navbar />
 
       {/* Hero */}
-      <section className="py-24 bg-gradient-to-b from-zinc-900 via-black to-zinc-900 text-white">
+      <section className="pt-28 pb-24 bg-gradient-to-b from-zinc-900 via-black to-zinc-900 text-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-4">
+          <h1 className="text-4xl md:text-5xl font-serif text-pearl-gold mb-4">
             Comfortable & Senior-Friendly Bedroom Interior Designs
           </h1>
           <p className="text-gray-300 max-w-3xl mx-auto mb-8">
@@ -32,10 +32,7 @@ export default function SeniorBedroomPage() {
 
           <a
             href={`https://wa.me/${PHONE_NUMBER}`}
-            className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
-                       text-black font-medium shadow-[0_0_25px_rgba(255,215,0,0.6)]
-                       hover:shadow-[0_0_45px_rgba(255,215,0,0.9)]
-                       hover:scale-105 transition-all duration-300"
+            className="btn-primary"
           >
             Talk to Our Senior Bedroom Design Expert
           </a>
@@ -45,7 +42,7 @@ export default function SeniorBedroomPage() {
       {/* Gallery */}
       <section className="py-20 bg-black text-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-3xl font-serif text-[#D4AF37] mb-8 text-center">
+          <h2 className="text-3xl font-serif text-pearl-gold mb-8 text-center">
             Senior Bedroom Design Gallery
           </h2>
 
@@ -68,7 +65,7 @@ export default function SeniorBedroomPage() {
       <section className="py-20 bg-zinc-900 text-white">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10">
           <div>
-            <h2 className="text-3xl font-serif text-[#D4AF37] mb-4">
+            <h2 className="text-3xl font-serif text-pearl-gold mb-4">
               What We Design in a Senior Bedroom
             </h2>
             <ul className="text-gray-300 space-y-3">
@@ -82,7 +79,7 @@ export default function SeniorBedroomPage() {
           </div>
 
           <div>
-            <h2 className="text-3xl font-serif text-[#D4AF37] mb-4">
+            <h2 className="text-3xl font-serif text-pearl-gold mb-4">
               Our Design & Execution Process
             </h2>
             <ol className="text-gray-300 space-y-2">
@@ -99,7 +96,7 @@ export default function SeniorBedroomPage() {
       {/* Why Choose */}
       <section className="py-20 bg-black text-white">
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h2 className="text-3xl font-serif text-[#D4AF37] mb-4">
+          <h2 className="text-3xl font-serif text-pearl-gold mb-4">
             Why Choose Pearl Interiors for Senior Bedroom Design?
           </h2>
           <p className="text-gray-300 mb-6">

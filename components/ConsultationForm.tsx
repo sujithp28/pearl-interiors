@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import { PHONE_NUMBER } from "@/utils/constants";
 import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 
@@ -18,7 +19,6 @@ export default function ConsultationForm({ onClose }: Props) {
     time: "",
   });
 
-  // Keep background scroll locked while modal is mounted.
   useBodyScrollLock(true);
 
   useEffect(() => {
@@ -27,10 +27,7 @@ export default function ConsultationForm({ onClose }: Props) {
     };
 
     window.addEventListener("keydown", handleEsc);
-
-    return () => {
-      window.removeEventListener("keydown", handleEsc);
-    };
+    return () => window.removeEventListener("keydown", handleEsc);
   }, [onClose]);
 
   const handleChange = (
@@ -57,43 +54,47 @@ export default function ConsultationForm({ onClose }: Props) {
       message
     )}`;
 
-    // ✅ Direct redirect (no popup blocker issue)
     window.location.href = whatsappURL;
-
     onClose();
   };
 
   return (
     <div
-      className="fixed inset-0 z-[999] bg-black/80 backdrop-blur-sm flex items-start justify-center overflow-y-auto"
+      className="fixed inset-0 z-[999] flex items-start justify-center overflow-y-auto bg-black/80 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="consultation-form-title"
       onClick={onClose}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative mt-24 mb-24 w-full max-w-2xl mx-auto px-6 animate-slideDown"
+        className="relative mx-auto mb-24 mt-24 w-full max-w-2xl animate-slideDown px-6"
       >
-        <div className="bg-gradient-to-b from-zinc-900 to-black border border-white/10 rounded-2xl p-8 shadow-2xl">
-
-          {/* CLOSE BUTTON */}
+        <div className="rounded-2xl border border-white/10 bg-gradient-to-b from-zinc-900 to-black p-8 shadow-2xl">
           <button
+            type="button"
+            aria-label="Close form"
             onClick={onClose}
-            className="absolute right-8 top-8 text-white/60 hover:text-white text-2xl"
+            className="absolute right-8 top-8 text-white/60 transition hover:text-white"
           >
-            ✕
+            <XMarkIcon className="h-7 w-7" />
           </button>
 
-          <h2 className="text-3xl md:text-4xl font-serif text-center text-[#D4AF37] mb-4">
+          <h2
+            id="consultation-form-title"
+            className="mb-4 text-center font-serif text-3xl text-pearl-gold md:text-4xl"
+          >
             Request a Private Design Consultation
           </h2>
 
-          <p className="text-center text-gray-400 mb-10">
+          <p className="mb-10 text-center text-gray-400">
             Share a few details and our lead designer will connect with you.
             All information is treated with strict confidentiality.
           </p>
 
           <form
             onSubmit={handleSubmit}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            className="grid grid-cols-1 gap-6 md:grid-cols-2"
           >
             <input
               name="name"
@@ -101,7 +102,7 @@ export default function ConsultationForm({ onClose }: Props) {
               placeholder="Full Name"
               onChange={handleChange}
               required
-              className="bg-black/40 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-[#D4AF37]"
+              className="input-field"
             />
 
             <input
@@ -110,7 +111,7 @@ export default function ConsultationForm({ onClose }: Props) {
               placeholder="City"
               onChange={handleChange}
               required
-              className="bg-black/40 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-[#D4AF37]"
+              className="input-field"
             />
 
             <input
@@ -119,16 +120,19 @@ export default function ConsultationForm({ onClose }: Props) {
               placeholder="WhatsApp Number"
               onChange={handleChange}
               required
-              className="bg-black/40 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-[#D4AF37]"
+              className="input-field"
             />
 
             <select
               name="property"
               onChange={handleChange}
               required
-              className="bg-black/40 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-[#D4AF37]"
+              className="select-field"
+              defaultValue=""
             >
-              <option value="">Property Type</option>
+              <option value="" disabled>
+                Property Type
+              </option>
               <option>Apartment</option>
               <option>Villa</option>
               <option>Office</option>
@@ -139,9 +143,12 @@ export default function ConsultationForm({ onClose }: Props) {
               name="budget"
               onChange={handleChange}
               required
-              className="bg-black/40 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-[#D4AF37]"
+              className="select-field"
+              defaultValue=""
             >
-              <option value="">Estimated Budget</option>
+              <option value="" disabled>
+                Estimated Budget
+              </option>
               <option>Below ₹2L</option>
               <option>₹2L – ₹5L</option>
               <option>₹5L – ₹10L</option>
@@ -155,26 +162,23 @@ export default function ConsultationForm({ onClose }: Props) {
               name="time"
               onChange={handleChange}
               required
-              className="bg-black/40 border border-white/10 rounded-lg p-3 focus:outline-none focus:border-[#D4AF37]"
+              className="select-field"
+              defaultValue=""
             >
-              <option value="">Preferred Call Time</option>
+              <option value="" disabled>
+                Preferred Call Time
+              </option>
               <option>Morning</option>
               <option>Afternoon</option>
               <option>Evening</option>
             </select>
 
-            <div className="md:col-span-2 text-center mt-4">
-              <button
-                type="submit"
-                className="px-10 py-3 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
-                text-black font-semibold shadow-[0_0_25px_rgba(255,215,0,0.6)]
-                hover:shadow-[0_0_45px_rgba(255,215,0,0.9)]
-                hover:scale-105 transition-all duration-300"
-              >
+            <div className="mt-2 text-center md:col-span-2">
+              <button type="submit" className="btn-primary px-10 py-3">
                 Send on WhatsApp
               </button>
 
-              <p className="mt-4 text-xs text-gray-500 italic">
+              <p className="mt-4 text-xs italic text-gray-500">
                 Your details will never be shared. 100% private & secure.
               </p>
             </div>

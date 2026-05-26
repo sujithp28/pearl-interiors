@@ -6,6 +6,16 @@ html {
   scroll-behavior: smooth;
 }
 
+@layer base {
+  body {
+    @apply font-sans antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-pearl-gold ring-offset-2 ring-offset-black;
+  }
+}
+
 /* Cinematic slow zoom for hero background */
 @keyframes slowZoom {
   0% {
@@ -23,13 +33,13 @@ html {
 /* Luxury Gold Pulse Animation */
 @keyframes luxuryPulse {
   0% {
-    box-shadow: 0 0 18px rgba(212,175,55,0.4);
+    box-shadow: 0 0 18px rgba(212, 175, 55, 0.4);
   }
   50% {
-    box-shadow: 0 0 35px rgba(212,175,55,0.85);
+    box-shadow: 0 0 35px rgba(212, 175, 55, 0.85);
   }
   100% {
-    box-shadow: 0 0 18px rgba(212,175,55,0.4);
+    box-shadow: 0 0 18px rgba(212, 175, 55, 0.4);
   }
 }
 
@@ -46,58 +56,9 @@ html {
 .luxury-card:hover {
   transform: translateY(-10px) scale(1.03);
   box-shadow:
-    0 20px 40px rgba(0,0,0,0.35),
-    0 0 28px rgba(212,175,55,0.45);
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    0 0 28px rgba(212, 175, 55, 0.45);
 }
-
-/* Projects Section */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
-  padding: 0 60px;
-}
-
-.project-card {
-  background: white;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-  transition: all 0.4s ease;
-  cursor: pointer;
-}
-
-.project-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 28px 60px rgba(0,0,0,0.25);
-}
-
-.project-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-}
-
-.project-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.project-card:hover .project-image {
-  transform: scale(1.12);
-}
-
-.project-title {
-  text-align: center;
-  padding: 14px;
-  font-size: 18px;
-  font-weight: 600;
-  background: white;
-}
-
 
 @keyframes slideDown {
   from {
@@ -114,3 +75,42 @@ html {
   animation: slideDown 0.4s ease forwards;
 }
 
+/* Primary CTA button */
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-pearl-gold via-[#e8c84a] to-pearl-gold px-8 py-3 font-semibold text-black shadow-gold-sm transition-all duration-300 hover:scale-105 hover:shadow-gold-lg;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center rounded-full border border-white/25 px-8 py-3 font-semibold text-white transition-all duration-300 hover:border-pearl-gold hover:text-pearl-gold;
+}
+
+/* Form inputs */
+.input-field {
+  @apply w-full rounded-lg border border-white/10 bg-black/40 p-3 text-white transition-colors focus:border-pearl-gold focus:outline-none;
+}
+
+.select-field {
+  @apply input-field appearance-none;
+}
+
+.select-field option {
+  @apply bg-zinc-900 text-white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-bg-animate,
+  .luxury-glow,
+  .animate-slideDown {
+    animation: none;
+  }
+
+  .luxury-card,
+  .luxury-card:hover {
+    transform: none;
+    transition: box-shadow 0.2s ease;
+  }
+}

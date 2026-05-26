@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import SectionHeader from "@/components/SectionHeader";
 
 const faqs = [
   {
@@ -29,31 +31,55 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-gradient-to-b from-[#0a0a0a] to-black text-white">
-      <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl text-center font-serif text-yellow-500 mb-16">
-          Frequently Asked Questions
-        </h2>
+    <section className="bg-gradient-to-b from-pearl-dark to-black py-24 text-white">
+      <div className="mx-auto max-w-4xl px-6">
+        <SectionHeader
+          eyebrow="Questions"
+          title="Frequently Asked Questions"
+          className="mb-16"
+        />
 
-        <div className="space-y-6">
-          {faqs.map((item, i) => (
-            <div
-              key={i}
-              className="border border-gray-800 rounded-xl p-6 cursor-pointer"
-              onClick={() => setOpen(open === i ? null : i)}
-            >
-              <div className="flex justify-between items-center">
-                <h3 className="text-lg font-semibold">{item.q}</h3>
-                <span className="text-yellow-500 text-xl">
-                  {open === i ? "−" : "+"}
-                </span>
+        <div className="space-y-4">
+          {faqs.map((item, i) => {
+            const isOpen = open === i;
+
+            return (
+              <div
+                key={item.q}
+                className="overflow-hidden rounded-xl border border-gray-800 bg-white/[0.02] transition-colors hover:border-pearl-gold/30"
+              >
+                <button
+                  type="button"
+                  id={`faq-trigger-${i}`}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${i}`}
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="flex w-full items-center justify-between gap-4 p-6 text-left"
+                >
+                  <h3 className="text-lg font-semibold">{item.q}</h3>
+                  <ChevronDownIcon
+                    className={`h-5 w-5 shrink-0 text-pearl-gold transition-transform duration-300 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                    aria-hidden
+                  />
+                </button>
+
+                <div
+                  id={`faq-panel-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-trigger-${i}`}
+                  className={`grid transition-all duration-300 ease-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="px-6 pb-6 text-gray-400 leading-relaxed">{item.a}</p>
+                  </div>
+                </div>
               </div>
-
-              {open === i && (
-                <p className="text-gray-400 mt-4">{item.a}</p>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
