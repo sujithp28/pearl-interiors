@@ -12,6 +12,26 @@ export const metadata = {
   },
 };
 
+export const metadata = {
+  title: "Luxury Interior Designers in Hyderabad | Pearl Interiors",
+  description:
+    "Pearl Interiors offers luxury turnkey interior design and execution services in Hyderabad for apartments, villas, kitchens and commercial spaces.",
+  openGraph: {
+    title: "Pearl Interiors – Interior Designers in Hyderabad",
+    description:
+      "Premium interior design solutions in Hyderabad with turnkey execution and confidentiality.",
+    url: "https://pearl-interiors.vercel.app/hyderabad-interior-designers",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Pearl Interiors Hyderabad Interior Design",
+      },
+    ],
+  },
+};
+
 export default function HyderabadSEOPage() {
   return (
     <>

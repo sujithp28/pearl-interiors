@@ -12,6 +12,26 @@ export const metadata = {
   },
 };
 
+export const metadata = {
+  title: "Top Interior Designers in Bangalore | Pearl Interiors",
+  description:
+    "Pearl Interiors delivers premium turnkey interior design services across Bangalore, including apartments, villas, modular kitchens and commercial interiors.",
+  openGraph: {
+    title: "Pearl Interiors – Interior Designers in Bangalore",
+    description:
+      "Luxury interior design solutions in Bangalore for homes, apartments and offices.",
+    url: "https://pearl-interiors.vercel.app/bangalore-interior-designers",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Pearl Interiors Bangalore Interior Design",
+      },
+    ],
+  },
+};
+
 export default function BangaloreSEOPage() {
   return (
     <>

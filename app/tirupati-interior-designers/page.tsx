@@ -12,6 +12,26 @@ export const metadata = {
   },
 };
 
+export const metadata = {
+  title: "Interior Designers in Tirupati | Pearl Interiors",
+  description:
+    "Pearl Interiors provides premium turnkey interior design solutions in Tirupati for apartments, villas, kitchens and commercial spaces with privacy and quality execution.",
+  openGraph: {
+    title: "Pearl Interiors – Interior Designers in Tirupati",
+    description:
+      "Luxury turnkey interior design services in Tirupati for homes and commercial interiors.",
+    url: "https://pearl-interiors.vercel.app/tirupati-interior-designers",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Pearl Interiors Tirupati Interior Design",
+      },
+    ],
+  },
+};
+
 export default function TirupatiSEOPage() {
   return (
     <>

@@ -39,7 +39,11 @@ export const metadata: Metadata = {
     "Villa Interior Designers",
     "Home Interior Designers Near Me",
     "Turnkey Interior Designers",
+    "Residential Interior Design",
+    "Commercial Interior Designers",
   ],
+  authors: [{ name: "Pearl Interiors" }],
+  creator: "Pearl Interiors",
   openGraph: {
     title:
       "Pearl Interiors – Luxury Interior Designers in Hyderabad, Bangalore & South India",
@@ -48,15 +52,33 @@ export const metadata: Metadata = {
     url: SITE_URL,
     siteName: "Pearl Interiors",
     locale: "en_IN",
+    type: "website",
     images: [
       {
         url: "/hero-bg.jpg",
         width: 1200,
         height: 630,
-        alt: "Pearl Interiors Luxury Design Studio",
+        alt: "Pearl Interiors luxury interior design studio",
       },
     ],
-    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Pearl Interiors – Luxury Interior Designers in Hyderabad, Bangalore & Anantapur",
+    description:
+      "Premium turnkey interior design services for homes, villas, apartments and commercial spaces across South India.",
+    creator: "@PearlInteriors",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      nocache: false,
+    },
   },
 };
 

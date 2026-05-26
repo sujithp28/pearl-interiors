@@ -12,6 +12,26 @@ export const metadata = {
   },
 };
 
+export const metadata = {
+  title: "Best Interior Designers in Anantapur | Pearl Interiors",
+  description:
+    "Pearl Interiors offers luxury turnkey interior design services in Anantapur for apartments, villas, modular kitchens and commercial spaces with complete confidentiality.",
+  openGraph: {
+    title: "Pearl Interiors – Interior Designers in Anantapur",
+    description:
+      "Premium interior design, execution and turnkey project delivery for Anantapur homes, villas and offices.",
+    url: "https://pearl-interiors.vercel.app/anantapur-interior-designers",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Pearl Interiors Anantapur Interior Design",
+      },
+    ],
+  },
+};
+
 export default function AnantapurSEOPage() {
   return (
     <>
