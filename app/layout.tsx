@@ -1,9 +1,11 @@
 import { Playfair_Display, Inter } from "next/font/google";
+import type { Metadata } from "next";
 import "./globals.css";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import LocalSchema from "@/components/LocalSchema";
 import MobileStickyCTA from "@/components/MobileStickyCTA";
 import { SITE_URL } from "@/utils/constants";
+import { baseMetadata } from "@/utils/seo";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -17,31 +19,35 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata = {
-  metadataBase: new URL(SITE_URL),
-  title:
-    "Luxury Interior Designers in Hyderabad, Bangalore & Anantapur | Pearl Interiors",
+export const metadata: Metadata = {
+  ...baseMetadata,
+  title: {
+    default:
+      "Luxury Interior Designers in Hyderabad, Bangalore, Anantapur & Tirupati | Pearl Interiors",
+    template: "%s | Pearl Interiors",
+  },
   description:
-    "Pearl Interiors is a premium interior design studio serving Hyderabad, Bangalore, and Anantapur, specializing in luxury apartments, villas, modular kitchens, and commercial interiors with complete client confidentiality.",
+    "Pearl Interiors — premium interior designers for apartments, villas, modular kitchens, and commercial spaces in Hyderabad, Bangalore, Anantapur, and Tirupati. Turnkey execution with complete confidentiality.",
   keywords: [
     "Interior Designers in Hyderabad",
     "Interior Designers in Bangalore",
     "Interior Designers in Anantapur",
-    "Luxury Interior Designers Hyderabad",
-    "Luxury Interior Designers Bangalore",
-    "Luxury Interior Designers Anantapur",
-    "Villa Interior Designers Hyderabad",
+    "Interior Designers in Tirupati",
+    "Modular Kitchen Designers Hyderabad",
     "Modular Kitchen Designers Bangalore",
-    "Commercial Interior Designers Hyderabad",
-    "Best Interior Designers South India",
+    "Luxury Interior Designers South India",
+    "Villa Interior Designers",
+    "Home Interior Designers Near Me",
+    "Turnkey Interior Designers",
   ],
   openGraph: {
     title:
-      "Pearl Interiors – Luxury Interior Designers in Hyderabad, Bangalore & Anantapur",
+      "Pearl Interiors – Luxury Interior Designers in Hyderabad, Bangalore & South India",
     description:
       "Bespoke luxury interiors for apartments, villas, and commercial spaces across South India.",
     url: SITE_URL,
     siteName: "Pearl Interiors",
+    locale: "en_IN",
     images: [
       {
         url: "/hero-bg.jpg",
@@ -65,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="en-IN" className={`${playfair.variable} ${inter.variable}`}>
       <body
         suppressHydrationWarning
         className="overflow-x-hidden bg-black pb-16 font-sans text-white md:pb-0"
