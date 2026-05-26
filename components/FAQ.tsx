@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "Do you provide warranty?",
-    a: "Yes. We provide up to 5 years warranty on modular kitchens and wardrobes.",
+    a: "Yes. We provide up to 15 years warranty on modular kitchens and wardrobes.",
   },
   {
     q: "Do you offer EMI options?",
