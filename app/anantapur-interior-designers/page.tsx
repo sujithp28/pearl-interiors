@@ -4,18 +4,12 @@ import Contact from "@/components/Contact";
 import { PHONE_NUMBER, SITE_URL } from "@/utils/constants";
 
 export const metadata = {
-  title: "Interior Designers in Anantapur | Pearl Interiors",
-  description:
-    "Premium interiors in Anantapur for homes, villas, modular kitchens, wardrobes, and commercial spaces with confidential turnkey execution.",
-  alternates: {
-    canonical: `${SITE_URL}/anantapur-interior-designers`,
-  },
-};
-
-export const metadata = {
   title: "Best Interior Designers in Anantapur | Pearl Interiors",
   description:
     "Pearl Interiors offers luxury turnkey interior design services in Anantapur for apartments, villas, modular kitchens and commercial spaces with complete confidentiality.",
+  alternates: {
+    canonical: `${SITE_URL}/anantapur-interior-designers`,
+  },
   openGraph: {
     title: "Pearl Interiors – Interior Designers in Anantapur",
     description:

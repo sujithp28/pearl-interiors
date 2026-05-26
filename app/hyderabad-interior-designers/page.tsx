@@ -4,18 +4,12 @@ import Contact from "@/components/Contact";
 import { PHONE_NUMBER, SITE_URL } from "@/utils/constants";
 
 export const metadata = {
-  title: "Turnkey Interior Designers in Hyderabad | Pearl Interiors",
-  description:
-    "Premium turnkey interiors in Hyderabad for apartments, villas, modular kitchens, and commercial spaces with complete privacy and project management.",
-  alternates: {
-    canonical: `${SITE_URL}/hyderabad-interior-designers`,
-  },
-};
-
-export const metadata = {
   title: "Luxury Interior Designers in Hyderabad | Pearl Interiors",
   description:
     "Pearl Interiors offers luxury turnkey interior design and execution services in Hyderabad for apartments, villas, kitchens and commercial spaces.",
+  alternates: {
+    canonical: `${SITE_URL}/hyderabad-interior-designers`,
+  },
   openGraph: {
     title: "Pearl Interiors – Interior Designers in Hyderabad",
     description:

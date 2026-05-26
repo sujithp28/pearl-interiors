@@ -7,7 +7,12 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   test: (() => {
-    const coverage: any = {
+    const coverage: {
+      provider: "v8" | "istanbul" | "custom";
+      reporter: string[];
+      all: boolean;
+      include: string[];
+    } = {
       // Use a provider compatible with the installed Vitest types.
       provider: "v8",
       reporter: ["text", "lcov"],

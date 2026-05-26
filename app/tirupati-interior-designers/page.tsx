@@ -6,16 +6,10 @@ import { PHONE_NUMBER, SITE_URL } from "@/utils/constants";
 export const metadata = {
   title: "Interior Designers in Tirupati | Pearl Interiors",
   description:
-    "Turnkey home and commercial interior design services in Tirupati for apartments, villas, modular kitchens, and wardrobes.",
+    "Pearl Interiors provides premium turnkey interior design solutions in Tirupati for apartments, villas, kitchens and commercial spaces with privacy and quality execution.",
   alternates: {
     canonical: `${SITE_URL}/tirupati-interior-designers`,
   },
-};
-
-export const metadata = {
-  title: "Interior Designers in Tirupati | Pearl Interiors",
-  description:
-    "Pearl Interiors provides premium turnkey interior design solutions in Tirupati for apartments, villas, kitchens and commercial spaces with privacy and quality execution.",
   openGraph: {
     title: "Pearl Interiors – Interior Designers in Tirupati",
     description:
