@@ -1,34 +1,25 @@
-"use client";
-
-import { useState } from "react";
-
 import FAQ from "../components/FAQ";
 import Pricing from "../components/Pricing";
 import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
 import Services from "../components/Services";
 import Projects from "../components/Projects";
 import WhyChooseUs from "../components/WhyChooseUs";
 import ProcessTimeline from "../components/ProcessTimeline";
-import ConsultationForm from "../components/ConsultationForm";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import FadeInSection from "../components/FadeInSection";
 import CitySEO from "../components/CitySEO";
 import TrustProof from "../components/TrustProof";
 import Testimonials from "../components/Testimonials";
+import HomeHeroSection from "../components/HomeHeroSection";
 
 export default function Home() {
-  const [openForm, setOpenForm] = useState(false);
-
   return (
     <>
       <Navbar />
 
       {/* 1️⃣ HERO */}
-      <FadeInSection>
-        <Hero openForm={() => setOpenForm(true)} />
-      </FadeInSection>
+      <HomeHeroSection />
 
       {/* 2️⃣ TRUST */}
       <FadeInSection>
@@ -78,11 +69,6 @@ export default function Home() {
       </div>
 
       <Footer />
-
-      {/* ⭐ GLOBAL MODAL (VERY IMPORTANT) */}
-      {openForm && (
-        <ConsultationForm onClose={() => setOpenForm(false)} />
-      )}
     </>
   );
 }

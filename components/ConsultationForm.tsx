@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { PHONE_NUMBER } from "@/utils/constants";
+import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 
 type Props = {
   onClose: () => void;
@@ -17,10 +18,10 @@ export default function ConsultationForm({ onClose }: Props) {
     time: "",
   });
 
-  // 🔒 Prevent background scroll
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
+  // Keep background scroll locked while modal is mounted.
+  useBodyScrollLock(true);
 
+  useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
@@ -28,7 +29,6 @@ export default function ConsultationForm({ onClose }: Props) {
     window.addEventListener("keydown", handleEsc);
 
     return () => {
-      document.body.style.overflow = "auto";
       window.removeEventListener("keydown", handleEsc);
     };
   }, [onClose]);

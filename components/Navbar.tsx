@@ -1,24 +1,39 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { PHONE_NUMBER } from "@/utils/constants";
+import useBodyScrollLock from "@/hooks/useBodyScrollLock";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  const navItems = [
+    { label: "Services", id: "services" },
+    { label: "Design Styles", id: "designs" },
+    { label: "Contact", id: "contact" },
+  ];
 
-  // Prevent page scroll when menu open
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "auto";
-  }, [open]);
+  // Prevent page scroll when menu is open, without clashing with other overlays.
+  useBodyScrollLock(open);
 
-  const scrollToSection = (id: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+    closeMenu = false
+  ) => {
+    if (closeMenu) setOpen(false);
+    if (!isHomePage) return;
+
     const el = document.getElementById(id);
-    if (el) {
-      const yOffset = -100;
-      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-    setOpen(false);
+    if (!el) return;
+
+    e.preventDefault();
+    const yOffset = -100;
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: "smooth" });
   };
 
   return (
@@ -27,27 +42,24 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 w-full bg-black/80 backdrop-blur-md text-white z-[100] border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           {/* Logo */}
-          <h1 className="text-xl font-serif tracking-wide text-[#D4AF37]">
+          <Link href="/" className="text-xl font-serif tracking-wide text-[#D4AF37]">
             Pearl Interiors
-          </h1>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-10 text-sm uppercase tracking-wider">
-            {[
-              { label: "Services", id: "services" },
-              { label: "Design Styles", id: "designs" },
-              { label: "Contact", id: "contact" },
-            ].map((item) => (
-              <button
+            {navItems.map((item) => (
+              <Link
                 key={item.label}
-                onClick={() => scrollToSection(item.id)}
+                href={`/#${item.id}`}
+                onClick={(e) => handleNavClick(e, item.id)}
                 className="relative group transition-all duration-300"
               >
                 <span className="group-hover:text-[#D4AF37] transition-colors">
                   {item.label}
                 </span>
                 <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -93,14 +105,11 @@ export default function Navbar() {
 
         {/* Navigation Links */}
         <div className="flex flex-col gap-10 p-10 text-xl font-serif">
-          {[
-            { label: "Services", id: "services" },
-            { label: "Design Styles", id: "designs" },
-            { label: "Contact", id: "contact" },
-          ].map((item) => (
-            <button
+          {navItems.map((item) => (
+            <Link
               key={item.id}
-              onClick={() => scrollToSection(item.id)}
+              href={`/#${item.id}`}
+              onClick={(e) => handleNavClick(e, item.id, true)}
               className="group text-left relative py-2 px-3 rounded-lg hover:bg-white/5 transition"
             >
               <span className="group-hover:text-[#D4AF37] transition">
@@ -108,7 +117,7 @@ export default function Navbar() {
               </span>
 
               <span className="absolute left-3 -bottom-2 w-0 h-[1px] bg-[#D4AF37] transition-all duration-300 group-hover:w-16" />
-            </button>
+            </Link>
           ))}
         </div>
 
