@@ -1,8 +1,11 @@
 import "./globals.css";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import LocalSchema from "@/components/LocalSchema";
+import MobileStickyCTA from "@/components/MobileStickyCTA";
+import { SITE_URL } from "@/utils/constants";
 
 export const metadata = {
-  metadataBase: new URL("https://pearl-interiors.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title:
     "Luxury Interior Designers in Hyderabad, Bangalore & Anantapur | Pearl Interiors",
   description:
@@ -24,11 +27,11 @@ export const metadata = {
       "Pearl Interiors – Luxury Interior Designers in Hyderabad, Bangalore & Anantapur",
     description:
       "Bespoke luxury interiors for apartments, villas, and commercial spaces across South India.",
-    url: "https://pearl-interiors.vercel.app",
+    url: SITE_URL,
     siteName: "Pearl Interiors",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/hero-bg.jpg",
         width: 1200,
         height: 630,
         alt: "Pearl Interiors Luxury Design Studio",
@@ -56,9 +59,10 @@ export default function RootLayout({
         className="bg-black text-white overflow-x-hidden"
       >
         {children}
+        <LocalSchema />
         <FloatingWhatsApp />
+        <MobileStickyCTA />
       </body>
     </html>
   );
 }
-

@@ -1,10 +1,11 @@
+import { SITE_URL } from "@/utils/constants";
+
 export default function robots() {
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://pearlinteriors.in/sitemap.xml",
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }
-

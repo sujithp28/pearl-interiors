@@ -44,7 +44,7 @@ export default function MasterBedroomPage() {
             {Array.from({ length: 4 }, (_, i) => (
               <Image
                 key={i}
-                src={`/projects/bedrooms/master/master${i + 1}.jpg`}
+                src={`/projects/bedrooms/bedroom${i + 1}.jpg`}
                 alt="Master Bedroom Interior Design"
                 width={600}
                 height={400}

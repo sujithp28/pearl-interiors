@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import FAQ from "../components/FAQ";
 import Pricing from "../components/Pricing";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
@@ -54,6 +55,10 @@ export default function Home() {
 
       <FadeInSection>
         <Pricing />
+      </FadeInSection>
+
+      <FadeInSection>
+        <FAQ />
       </FadeInSection>
 
       <div id="contact">

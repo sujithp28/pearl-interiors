@@ -1,11 +1,11 @@
-import { DISPLAY_PHONE } from "@/utils/constants";
+import { DISPLAY_PHONE, SITE_URL } from "@/utils/constants";
 
 export default function LocalSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Pearl Interiors",
-    url: "https://pearl-interiors.vercel.app",
+    url: SITE_URL,
     telephone: DISPLAY_PHONE,
     areaServed: ["Hyderabad", "Bangalore", "Anantapur"],
     priceRange: "₹₹₹",

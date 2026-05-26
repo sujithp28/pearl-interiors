@@ -1,19 +1,21 @@
+import { SITE_URL } from "@/utils/constants";
+
 export default function sitemap() {
   return [
     {
-      url: "https://thepearlinteriors.com",
+      url: SITE_URL,
       lastModified: new Date(),
     },
     {
-      url: "https://thepearlinteriors.com/#services",
+      url: `${SITE_URL}/#services`,
       lastModified: new Date(),
     },
     {
-      url: "https://thepearlinteriors.com/#designs",
+      url: `${SITE_URL}/#designs`,
       lastModified: new Date(),
     },
     {
-      url: "https://thepearlinteriors.com/#contact",
+      url: `${SITE_URL}/#contact`,
       lastModified: new Date(),
     },
   ];

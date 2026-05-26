@@ -120,6 +120,7 @@ export default function Navbar() {
           <a
             href={`https://wa.me/${PHONE_NUMBER}`}
             target="_blank"
+            rel="noopener noreferrer"
             className="block text-center bg-[#D4AF37] text-black font-semibold py-4 rounded-full text-lg shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 transition"
           >
             Call / WhatsApp Now

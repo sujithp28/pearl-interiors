@@ -83,6 +83,7 @@ export default function Pricing() {
               <a
                 href={`https://wa.me/${PHONE_NUMBER}`}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-full transition"
               >
                 Get Free Quote
