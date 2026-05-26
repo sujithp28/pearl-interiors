@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 
-import FAQ from "../components/FAQ";
 import Pricing from "../components/Pricing";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";

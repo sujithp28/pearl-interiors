@@ -41,12 +41,7 @@ export default function Projects() {
 
   const [index, setIndex] = useState(0);
 
-  const images = catalog[category] || [];
-
-  // Reset index when category changes
-  useEffect(() => {
-    setIndex(0);
-  }, [category]);
+  const images = catalog[category];
 
   // Auto slide (safe version)
   useEffect(() => {
@@ -89,9 +84,10 @@ export default function Projects() {
         {Object.keys(catalog).map((cat) => (
           <button
             key={cat}
-            onClick={() =>
-              setCategory(cat as keyof typeof catalog)
-            }
+            onClick={() => {
+              setCategory(cat as keyof typeof catalog);
+              setIndex(0);
+            }}
             className={`px-6 py-2 rounded-full border transition-all duration-300 ${
               category === cat
                 ? "border-[#D4AF37] text-[#D4AF37]"

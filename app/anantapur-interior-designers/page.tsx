@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
+import { PHONE_NUMBER } from "@/utils/constants";
 
 export default function AnantapurSEOPage() {
   return (
@@ -22,7 +23,7 @@ export default function AnantapurSEOPage() {
           </p>
 
           <a
-            href="https://wa.me/919398781662"
+            href={`https://wa.me/${PHONE_NUMBER}`}
             className="inline-block mt-4 px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
                        text-black font-medium shadow-[0_0_25px_rgba(255,215,0,0.6)]
                        hover:shadow-[0_0_45px_rgba(255,215,0,0.9)]
@@ -173,4 +174,3 @@ export default function AnantapurSEOPage() {
     </>
   );
 }
-

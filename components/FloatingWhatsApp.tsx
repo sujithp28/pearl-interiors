@@ -1,12 +1,12 @@
 "use client";
 
-export default function FloatingWhatsApp() {
-  const phoneNumber = "919398781662"; // 🔴 Your real number
+import { PHONE_NUMBER } from "@/utils/constants";
 
+export default function FloatingWhatsApp() {
   const message =
     "Hi Pearl Interiors, I would like to discuss my interior project.";
 
-  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+  const whatsappURL = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(
     message
   )}`;
 

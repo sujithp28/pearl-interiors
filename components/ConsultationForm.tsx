@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { PHONE_NUMBER } from "@/utils/constants";
 
 type Props = {
   onClose: () => void;
@@ -52,7 +53,7 @@ export default function ConsultationForm({ onClose }: Props) {
 
 — Pearl Interiors Website Lead`;
 
-    const whatsappURL = `https://wa.me/9876543210?text=${encodeURIComponent(
+    const whatsappURL = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(
       message
     )}`;
 

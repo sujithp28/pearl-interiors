@@ -1,10 +1,12 @@
+import { DISPLAY_PHONE } from "@/utils/constants";
+
 export default function LocalSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Pearl Interiors",
     url: "https://pearl-interiors.vercel.app",
-    telephone: "+91 93910 45855",
+    telephone: DISPLAY_PHONE,
     areaServed: ["Hyderabad", "Bangalore", "Anantapur"],
     priceRange: "₹₹₹",
     address: {
@@ -20,4 +22,3 @@ export default function LocalSchema() {
     />
   );
 }
-

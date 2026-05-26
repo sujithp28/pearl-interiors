@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
+import { PHONE_NUMBER } from "@/utils/constants";
+import Image from "next/image";
 
 export default function CoupleBedroomPage() {
   return (
@@ -20,7 +22,7 @@ export default function CoupleBedroomPage() {
           </p>
 
           <a
-            href="https://wa.me/919398781662"
+            href={`https://wa.me/${PHONE_NUMBER}`}
             className="inline-block px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
                        text-black font-medium shadow-[0_0_25px_rgba(255,215,0,0.6)]
                        hover:shadow-[0_0_45px_rgba(255,215,0,0.9)]
@@ -40,10 +42,12 @@ export default function CoupleBedroomPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {Array.from({ length: 4 }, (_, i) => (
-              <img
+              <Image
                 key={i}
                 src={`/projects/bedrooms/couple/couple${i + 1}.jpg`}
                 alt="Couple Bedroom Interior Design"
+                width={600}
+                height={400}
                 className="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300"
               />
             ))}
@@ -108,4 +112,3 @@ export default function CoupleBedroomPage() {
     </>
   );
 }
-

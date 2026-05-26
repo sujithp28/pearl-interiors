@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { PHONE_NUMBER } from "@/utils/constants";
 
 const plans = [
   {
@@ -80,7 +81,7 @@ export default function Pricing() {
               </ul>
 
               <a
-                href="https://wa.me/919398781662"
+                href={`https://wa.me/${PHONE_NUMBER}`}
                 target="_blank"
                 className="inline-block bg-yellow-500 hover:bg-yellow-400 text-black font-semibold px-6 py-3 rounded-full transition"
               >
@@ -93,4 +94,3 @@ export default function Pricing() {
     </section>
   );
 }
-

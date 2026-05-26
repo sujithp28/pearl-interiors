@@ -1,9 +1,11 @@
 "use client";
 
+import { PHONE_NUMBER } from "@/utils/constants";
+
 export default function MobileStickyCTA() {
   return (
     <a
-      href="https://wa.me/919398781662"
+      href={`https://wa.me/${PHONE_NUMBER}`}
       target="_blank"
       className="fixed bottom-0 left-0 right-0 z-50 md:hidden
                  bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500
@@ -14,4 +16,3 @@ export default function MobileStickyCTA() {
     </a>
   );
 }
-
