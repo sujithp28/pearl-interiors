@@ -7,6 +7,7 @@ const routes: { path: string; priority: number; changeFrequency: MetadataRoute.S
   { path: "/bangalore-interior-designers", priority: 0.9, changeFrequency: "monthly" },
   { path: "/tirupati-interior-designers", priority: 0.85, changeFrequency: "monthly" },
   { path: "/anantapur-interior-designers", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/vijayawada-interior-designers", priority: 0.85, changeFrequency: "monthly" },
   { path: "/modular-kitchen-interior-designers", priority: 0.85, changeFrequency: "monthly" },
   { path: "/bedroom-interiors/master-bedroom", priority: 0.7, changeFrequency: "monthly" },
   { path: "/bedroom-interiors/kids", priority: 0.7, changeFrequency: "monthly" },
