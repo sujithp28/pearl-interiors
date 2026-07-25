@@ -6,9 +6,9 @@ const cities: { name: string; href?: string }[] = [
   { name: "Bangalore", href: "/bangalore-interior-designers" },
   { name: "Anantapur", href: "/anantapur-interior-designers" },
   { name: "Tirupati", href: "/tirupati-interior-designers" },
-  { name: "Vijayawada" },
-  { name: "Guntur" },
-  { name: "Kurnool" },
+  { name: "Vijayawada", href: "/vijayawada-interior-designers" },
+  { name: "Guntur", href: "/guntur-interior-designers" },
+  { name: "Kurnool", href: "/kurnool-interior-designers" },
 ];
 
 export default function CitySEO() {
