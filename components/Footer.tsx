@@ -13,6 +13,9 @@ const cityLinks = [
   { label: "Bangalore", href: "/bangalore-interior-designers" },
   { label: "Anantapur", href: "/anantapur-interior-designers" },
   { label: "Tirupati", href: "/tirupati-interior-designers" },
+  { label: "Vijayawada", href: "/vijayawada-interior-designers" },
+  { label: "Guntur", href: "/guntur-interior-designers" },
+  { label: "Kurnool", href: "/kurnool-interior-designers" },
 ];
 
 export default function Footer() {
