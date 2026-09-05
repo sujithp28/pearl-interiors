@@ -51,12 +51,18 @@ export function pageMetadata({
       type: "website",
       images: [
         {
-          url: "/hero-bg.jpg",
+          url: "/og-image.jpg",
           width: 1200,
           height: 630,
           alt: "Pearl Interiors Luxury Design Studio",
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-image.jpg"],
     },
   };
 }
