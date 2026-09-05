@@ -178,7 +178,7 @@ export default function ConsultationForm({ onClose }: Props) {
                 Send on WhatsApp
               </button>
 
-              <p className="mt-4 text-xs italic text-gray-500">
+              <p className="mt-4 text-xs italic text-gray-400">
                 Your details will never be shared. 100% private & secure.
               </p>
             </div>

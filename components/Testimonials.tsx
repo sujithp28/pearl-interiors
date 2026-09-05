@@ -64,7 +64,7 @@ export default function Testimonials() {
 
               <figcaption>
                 <div className="font-semibold text-pearl-gold">{item.name}</div>
-                <div className="text-sm text-zinc-500">{item.city}</div>
+                <div className="text-sm text-zinc-400">{item.city}</div>
               </figcaption>
             </figure>
           ))}

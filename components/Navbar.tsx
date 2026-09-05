@@ -91,8 +91,11 @@ export default function Navbar() {
     if (!el) return;
 
     e.preventDefault();
-    const yOffset = -100;
-    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    // Clear the fixed navbar by its measured height -- it changes on scroll.
+    const navHeight =
+      document.querySelector("nav")?.getBoundingClientRect().height ?? 64;
+    const y =
+      el.getBoundingClientRect().top + window.pageYOffset - (navHeight + 8);
     window.scrollTo({ top: y, behavior: "smooth" });
   };
 
@@ -119,7 +122,7 @@ export default function Navbar() {
                 key={item.label}
                 href={`/#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
-                className="group relative transition-all duration-300"
+                className="group relative inline-flex min-h-[44px] items-center transition-all duration-300"
               >
                 <span className="transition-colors group-hover:text-pearl-gold">
                   {item.label}
@@ -133,7 +136,7 @@ export default function Navbar() {
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
-            className="text-pearl-gold md:hidden"
+            className="-mr-2 flex h-11 w-11 items-center justify-center text-pearl-gold md:hidden"
             onClick={() => setOpen((prev) => !prev)}
           >
             {open ? (
@@ -167,14 +170,14 @@ export default function Navbar() {
 
         <div className="relative border-b border-white/10 p-6">
           <p className="font-serif text-xl text-pearl-gold">Menu</p>
-          <p className="mt-1 text-xs text-gray-500">Pearl Interiors</p>
+          <p className="mt-1 text-xs text-gray-400">Pearl Interiors</p>
 
           <button
             ref={closeBtnRef}
             type="button"
             aria-label="Close menu"
             onClick={() => setOpen(false)}
-            className="absolute right-6 top-5 text-white/70 hover:text-white"
+            className="absolute right-4 top-3 flex h-11 w-11 items-center justify-center text-white/70 hover:text-white"
           >
             <XMarkIcon className="h-7 w-7" />
           </button>

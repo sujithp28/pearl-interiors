@@ -37,13 +37,13 @@ export default function Footer() {
 
         <nav
           aria-label="Footer navigation"
-          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-400"
+          className="mt-8 flex flex-wrap justify-center gap-x-6 text-sm text-gray-400"
         >
           {footerLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="transition hover:text-pearl-gold"
+              className="inline-flex min-h-[44px] items-center transition hover:text-pearl-gold"
             >
               {link.label}
             </Link>
@@ -52,13 +52,13 @@ export default function Footer() {
 
         <nav
           aria-label="City pages"
-          className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-gray-500"
+          className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-gray-400"
         >
           {cityLinks.map((city) => (
             <Link
               key={city.href}
               href={city.href}
-              className="transition hover:text-pearl-gold"
+              className="inline-flex min-h-[44px] items-center transition hover:text-pearl-gold"
             >
               {city.label}
             </Link>
@@ -69,14 +69,14 @@ export default function Footer() {
           href={`https://wa.me/${PHONE_NUMBER}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-block text-sm font-medium text-pearl-gold transition hover:underline"
+          className="mt-6 inline-flex min-h-[44px] items-center text-sm font-medium text-pearl-gold transition hover:underline"
         >
           WhatsApp: {DISPLAY_PHONE}
         </a>
 
-        <p className="mt-6 text-xs text-gray-600">
+        <p className="mt-6 text-xs text-gray-400">
           © {new Date().getFullYear()} Pearl Interiors ·{" "}
-          <a href={SITE_URL} className="hover:text-gray-500">
+          <a href={SITE_URL} className="inline-flex min-h-[24px] items-center transition hover:text-pearl-gold">
             thepearlinteriors.com
           </a>
         </p>

@@ -99,7 +99,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        <p className="mx-auto mt-10 max-w-3xl text-sm leading-relaxed text-gray-500">
+        <p className="mx-auto mt-10 max-w-3xl text-sm leading-relaxed text-gray-400">
           Final pricing depends on site measurements, material selection, hardware brands,
           finish complexity, civil/electrical scope, and customization requirements.
         </p>

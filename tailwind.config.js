@@ -9,7 +9,7 @@ module.exports = {
       colors: {
         pearl: {
           gold: "#D4AF37",
-          "gold-muted": "#8a6a18",
+          "gold-muted": "#C9B37E",
           dark: "#0a0a0a",
         },
       },

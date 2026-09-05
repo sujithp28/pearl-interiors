@@ -34,7 +34,7 @@ export default function Contact({ onOpenForm }: ContactProps) {
           </a>
         </div>
 
-        <p className="mt-6 text-sm text-gray-500">
+        <p className="mt-6 text-sm text-gray-400">
           All consultations are strictly confidential.
         </p>
       </div>
