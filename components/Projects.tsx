@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import SectionHeader from "@/components/SectionHeader";
+import Lightbox from "@/components/Lightbox";
+import { blurMap } from "@/utils/blurData";
 
 const catalog: Record<string, string[]> = {
   Bedroom: Array.from(
@@ -35,36 +35,29 @@ const catalog: Record<string, string[]> = {
 
 export default function Projects() {
   const [category, setCategory] = useState<keyof typeof catalog>("Bedroom");
-  const [index, setIndex] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const images = catalog[category];
 
-  useEffect(() => {
-    if (!images.length) return;
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
 
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
+  const showPrev = useCallback(
+    () =>
+      setLightboxIndex((i) =>
+        i === null ? i : (i - 1 + images.length) % images.length
+      ),
+    [images.length]
+  );
 
-    return () => clearInterval(interval);
-  }, [images]);
-
-  const next = () => {
-    if (!images.length) return;
-    setIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const prev = () => {
-    if (!images.length) return;
-    setIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  const currentImage = images[index];
+  const showNext = useCallback(
+    () => setLightboxIndex((i) => (i === null ? i : (i + 1) % images.length)),
+    [images.length]
+  );
 
   return (
     <section
       id="designs"
-      className="relative bg-gradient-to-b from-zinc-900 via-black to-zinc-900 py-28 text-white"
+      className="relative bg-gradient-to-b from-zinc-900 via-black to-zinc-900 py-16 text-white"
     >
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader
@@ -78,11 +71,9 @@ export default function Projects() {
             <button
               key={cat}
               type="button"
-              onClick={() => {
-                setCategory(cat as keyof typeof catalog);
-                setIndex(0);
-              }}
-              className={`rounded-full border px-5 py-2 text-sm transition-all duration-300 ${
+              onClick={() => setCategory(cat as keyof typeof catalog)}
+              aria-pressed={category === cat}
+              className={`rounded-full border px-5 py-3 text-sm transition-all duration-300 ${
                 category === cat
                   ? "border-pearl-gold bg-pearl-gold/10 text-pearl-gold"
                   : "border-white/20 text-white/70 hover:border-pearl-gold/50"
@@ -93,69 +84,52 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="relative mx-auto max-w-5xl">
-          <div className="relative aspect-[16/9] overflow-hidden rounded-3xl shadow-2xl">
-            <AnimatePresence mode="wait">
-              {currentImage ? (
-                <motion.div
-                  key={`${category}-${index}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.45 }}
-                  className="absolute inset-0"
+        {images.length ? (
+          <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {images.map((src, i) => (
+              <li key={src}>
+                <button
+                  type="button"
+                  onClick={() => setLightboxIndex(i)}
+                  aria-label={`View ${category} interior design ${i + 1} full screen`}
+                  className="luxury-card group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
                 >
                   <Image
-                    src={currentImage}
-                    alt={`${category} interior design ${index + 1}`}
+                    src={src}
+                    alt={`${category} interior design ${i + 1}`}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 1024px"
-                    quality={90}
-                    className="object-cover"
-                    priority={index === 0}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={75}
+                    placeholder="blur"
+                    blurDataURL={blurMap[src]}
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    priority={i === 0}
                   />
-                </motion.div>
-              ) : (
-                <div className="flex h-full w-full items-center justify-center bg-zinc-800 text-gray-400">
-                  No image available
-                </div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          <button
-            type="button"
-            aria-label="Previous image"
-            onClick={prev}
-            className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/50 backdrop-blur-sm transition hover:bg-black/70 md:left-4"
-          >
-            <ChevronLeftIcon className="h-5 w-5" />
-          </button>
-
-          <button
-            type="button"
-            aria-label="Next image"
-            onClick={next}
-            className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/50 backdrop-blur-sm transition hover:bg-black/70 md:right-4"
-          >
-            <ChevronRightIcon className="h-5 w-5" />
-          </button>
-
-          <div className="mt-6 flex justify-center gap-2">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`Go to slide ${i + 1}`}
-                onClick={() => setIndex(i)}
-                className={`h-2 rounded-full transition-all ${
-                  i === index ? "w-6 bg-pearl-gold" : "w-2 bg-white/30 hover:bg-white/50"
-                }`}
-              />
+                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <span className="pointer-events-none absolute bottom-4 left-4 text-sm tracking-wide text-pearl-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    View full screen
+                  </span>
+                </button>
+              </li>
             ))}
+          </ul>
+        ) : (
+          <div className="flex h-64 w-full items-center justify-center rounded-2xl bg-zinc-800 text-gray-400">
+            No image available
           </div>
-        </div>
+        )}
       </div>
+
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={images}
+          index={lightboxIndex}
+          label={category}
+          onClose={closeLightbox}
+          onPrev={showPrev}
+          onNext={showNext}
+        />
+      )}
     </section>
   );
 }
