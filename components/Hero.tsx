@@ -1,15 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { blurMap } from "@/utils/blurData";
 
 export default function Hero({ openForm }: { openForm: () => void }) {
-  const [offset, setOffset] = useState(0);
+  const imageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setOffset(window.scrollY * 0.2);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let frame = 0;
+
+    const handleScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const node = imageRef.current;
+        if (node) {
+          node.style.transform = `translateY(${window.scrollY * 0.2}px) scale(1.05)`;
+        }
+      });
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
   }, []);
 
   const trustBadges = [
@@ -31,17 +49,17 @@ export default function Hero({ openForm }: { openForm: () => void }) {
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 pt-20 text-center text-white"
     >
       <Image
+        ref={imageRef}
         src="/hero-bg.jpg"
         alt="Luxury interior design living room"
         fill
-        preload
-        loading="eager"
-        quality={100}
+        priority
+        quality={75}
+        placeholder="blur"
+        blurDataURL={blurMap["/hero-bg.jpg"]}
         sizes="100vw"
         className="object-cover"
-        style={{
-          transform: `translateY(${offset}px) scale(1.05)`,
-        }}
+        style={{ transform: "scale(1.05)" }}
       />
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/80" />
@@ -55,12 +73,12 @@ export default function Hero({ openForm }: { openForm: () => void }) {
           Luxury Interior Designers in Hyderabad & Bangalore
         </p>
 
-        <p className="mx-auto mb-8 max-w-xl text-gray-400">
+        <p className="mx-auto mb-6 max-w-xl text-gray-300 md:mb-8">
           Bespoke interiors for apartments, villas & commercial spaces.
           Experience elegance, comfort and timeless luxury.
         </p>
 
-        <div className="mb-8 flex flex-col justify-center gap-4 sm:flex-row">
+        <div className="mb-6 flex flex-col justify-center gap-3 sm:flex-row md:mb-8 md:gap-4">
           <button type="button" onClick={openForm} className="luxury-glow btn-primary px-8 py-4">
             Schedule Free Design Consultation
           </button>
@@ -70,7 +88,7 @@ export default function Hero({ openForm }: { openForm: () => void }) {
           </a>
         </div>
 
-        <div className="mb-12 flex flex-wrap items-center justify-center gap-3 text-xs text-gray-200">
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-2 text-xs text-gray-200 md:mb-12 md:gap-3">
           {trustBadges.map((item) => (
             <span
               key={item}
@@ -81,7 +99,7 @@ export default function Hero({ openForm }: { openForm: () => void }) {
           ))}
         </div>
 
-        <div className="flex flex-col justify-center gap-8 text-sm text-gray-300 md:flex-row">
+        <div className="grid grid-cols-3 gap-4 text-center text-xs text-gray-300 sm:text-sm md:flex md:flex-row md:justify-center md:gap-8">
           {stats.map((stat) => (
             <div key={stat.label}>
               <div className="text-lg font-semibold text-white">{stat.value}</div>
